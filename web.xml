@@ -1,0 +1,1457 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="Sun, 6 Mar 2005 01:00:00 GMT"/>
+    <meta name="referrer" content="always"/>
+    <title>
+            未来事务管理局的小站
+</title>
+    <script><![CDATA[!function(f){var h=function(o,n,m){var k=new Date(),j,l;n=n||30;m=m||"/";k.setTime(k.getTime()+(n*24*60*60*1000));j="; expires="+k.toGMTString();for(l in o){f.cookie=l+"="+o[l]+j+"; path="+m}},d=function(m){var l=m+"=",o,n,j,k=f.cookie.split(";");for(n=0,j=k.length;n<j;n++){o=k[n].replace(/^\s+|\s+$/g,"");if(o.indexOf(l)==0){return o.substring(l.length,o.length).replace(/\"/g,"")}}return null},e=f.write,b={"douban.com":1,"douban.fm":1,"google.com":1,"google.cn":1,"googleapis.com":1,"gmaptiles.co.kr":1,"gstatic.com":1,"gstatic.cn":1,"google-analytics.com":1,"googleadservices.com":1},a=function(l,k){var j=new Image();j.onload=function(){};j.src="https://www.douban.com/j/except_report?kind=ra022&reason="+encodeURIComponent(l)+"&environment="+encodeURIComponent(k)},i=function(k){try{e.call(f,k)}catch(j){e(k)}},c=/<script.*?src\=["']?([^"'\s>]+)/ig,g=/http:\/\/(.+?)\.([^\/]+).+/i;f.writeln=f.write=function(k){var j=c.exec(k),l;if(!j){i(k);return}l=g.exec(j[1]);if(!l){i(k);return}if(b[l[2]]){i(k);return}if(d("hj")==="tqs"){return}a(j[1],location.href);h({hj:"tqs"},1);setTimeout(function(){location.replace(location.href)},50)}}(document);]]></script>
+    <script type="text/javascript" src="https://img3.doubanio.com/f/shire/29449d396dacb28fd9949c709ccf02a46b910156/js/do.js" data-cfg-corelib="https://img3.doubanio.com/f/shire/72ced6df41d4d158420cebdd254f9562942464e3/js/jquery.min.js"/>
+    <script type="text/javascript"><![CDATA[
+          Do.add('common', {path: 'https://img3.doubanio.com/f/shire/cbdbc18c58182d9ab8c745d6bb745cf62d8f9abd/js/site/common.js', type: 'js'});
+        Do.add('common-eventhandler', {path: 'https://img3.doubanio.com/f/shire/f8e5390fa68e08d4da3981b4e1f1752739e74c0f/js/site/common_eventhandler.js', type: 'js', requires: ['common']});
+        Do.add('setting-eventhandler', {path: 'https://img3.doubanio.com/f/shire/690eb7b083e4e086f2cfd0ab1313041785b8c1db/js/site/setting_eventhandler.js', type: 'js', requires: ['common']});
+        Do.add('dialog-css', {path: 'https://img3.doubanio.com/f/shire/8377b9498330a2e6f056d863987cc7a37eb4d486/css/ui/dialog.css', type: 'css'});
+        Do.add('dialog', {path: 'https://img3.doubanio.com/f/shire/4b3bad5e25de78678d700dd5353570dce3e6bbcc/js/ui/dialog.js', type: 'js', requires: ['dialog-css']});
+        Do.add('swf', {path: 'https://img3.doubanio.com/f/shire/b38e7b7bf607a06d0bc79a87736f0cde80d78e3c/js/swfobject.js', type: 'js'});
+        Do.add('video', {path: 'https://img3.doubanio.com/f/shire/f176e27c6467329451677143a5d5e94345b4cd48/js/site/video.js', type: 'js'});
+        Do.add('artist', {path: 'https://img3.doubanio.com/f/shire/6f282ed98f8a22369b06ede8d597fe1e3384ed84/js/site/artist.js', type: 'js', requires: ['swf']});
+        Do.add('slider', {path: 'https://img3.doubanio.com/f/shire/d8e29263385ae7460f145f82f0dba90fd12b70a9/js/site/slider.js', type: 'js'});
+        Do.add('effects', {path: 'https://img3.doubanio.com/f/shire/6733985128b21b1d52719fff9003cc60870a891b/js/lib/jquery-ui-effects-core.min.js', type: 'js'});
+        Do.add('room-setting', {path: 'https://img3.doubanio.com/f/shire/0de5154d46a152487a73c863da314139425aaf99/js/site/room-setting.js', type: 'js'});
+        Do.global('common', 'common-eventhandler');
+        var STATIC_FILE_VER = '53025';
+    ]]></script>
+    <link rel="shortcut icon" href="https://img3.doubanio.com/favicon.ico" type="image/x-icon"/>
+    <link href="https://img3.doubanio.com/f/shire/4058fa6a9d164232f1458338e59e6d4d60ed15ef/css/core.css" rel="stylesheet" type="text/css"/>
+    <link href="https://img3.doubanio.com/f/shire/58cd17958439fead88617644c21d9347e91d7856/css/site/common.css" rel="stylesheet" type="text/css"/>
+    <link href="https://img3.doubanio.com/f/shire/8b828dc94265e2a56cf33b382f7363ad27641234/css/site/head_poster.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript"><![CDATA[
+var roomHoverColor = '';
+]]></script>
+    <!-- 阿比鹿房间透明样式 -->
+    <link href="https://img3.doubanio.com/f/shire/4e6e8dd204c70a629d11bcd5af45188ae413fe16/css/site/theme/1/core.css" rel="stylesheet" type="text/css"/>
+    <style id="custom-theme"><![CDATA[
+
+
+
+
+
+
+
+
+
+
+
+
+]]></style>
+    <meta content="把未来管起来。&#10;FAA is watching you." name="description"/>
+    <style type="text/css"><![CDATA[
+      
+
+
+    ]]></style>
+    <script><![CDATA[
+      
+    ]]></script>
+    <style type="text/css"><![CDATA[
+
+
+
+.status-item{color:#333}.status-item .mod{margin:0;padding-bottom:12px;position:relative}.status-item .hd{float:left;margin:3px 20px 0 0;width:48px;height:48px}.status-item .bd{border-bottom:1px solid #eee;overflow:hidden;padding-bottom:14px;zoom:1;_width:517px;min-height:48px}.status-item .bd .text{margin:0 0 5px 0;font-size:13px;word-break:break-all}.status-item blockquote{margin:5px 0 5px 25px;padding:0 0 0 15px;background:url(https://img3.doubanio.com/f/shire/3aa1569bf2c602f12f5744a65ff458d179c4c765/pics/quotel.gif) no-repeat left 4px;width:375px;_width:365px}.status-item blockquote p{display:inline;background:url(https://img3.doubanio.com/f/shire/255fcb358bc814a4ee4eae37905c2a565da58ee9/pics/quoter.gif) no-repeat right bottom;padding:0 15px 0 0;word-wrap:break-word;*zoom:1}.status-item blockquote p img{vertical-align:bottom}.status-item .attachments{position:relative;overflow:hidden;zoom:1;_line-height:0;color:#999}.status-item .photo-set{max-width:128px;max-height:128px}.status-item .attachments div,.status-item .attachments h6,.status-item .attachments p{line-height:1.62}.status-item .description{margin:0;color:#aaa}.status-item .actions{margin:5px 0;color:#aaa}.status-item .actions a.btn{color:#7094b7}.status-item .actions a.btn:hover{background:#7094b7;color:#fff}.status-item .actions a.btn-unlike,.status-item .actions a.btn-unreshare{color:#999}.status-item .actions a.btn-unlike:hover,.status-item .actions a.btn-unreshare:hover{background:#999;color:#fff}.status-item .description,.status-item .attachments,.status-item .actions,.status-item .others{padding-left:24px}.status-item .attachments .description{padding-left:0;word-wrap:break-word}.status-item .big:hover{cursor:url(https://img3.doubanio.com/f/shire/899c1be80650f24c634f3f0d153bc60d0b4eec95/pics/icon/big.png),url(https://img3.doubanio.com/f/shire/555b9018bc9244a26d489e48267c0cd78d6625a5/pics/icon/big.cur),auto}.status-item .small:hover{cursor:url(https://img3.doubanio.com/f/shire/4a4db4321640fab2b32f253e71ff064daf8d2c90/pics/icon/small.png),url(https://img3.doubanio.com/f/shire/68970f423f4c7f63a6870ee4402152a00b2fea6d/pics/icon/small.cur),auto}.status-item .upload-pic-wrapper:hover{background:none}.status-item .others{display:none}.status-item .comments{position:relative;left:0;top:0;overflow:hidden;*zoom:1}.status-item .comments-items{_line-height:0}.status-item .comments-items p{margin:3px 0;color:#666;overflow:hidden;zoom:1;word-wrap:break-word;line-height:1.62}.status-item .comments-items .mover{background:#f2f2f2}.status-item .comments-items p em{float:left;width:80%;font-style:normal}.status-item .comments .comment-text{width:330px}.status-item .comments .add-more-comments,.comment-posted input{display:none}.status-item .comment-posted .add-more-comments{display:inline}.status-item .comments-items .btn-del{float:right;color:#aaa}.status-item .comments-items .btn-del:hover{color:#bbb;background:none}.status-item .likers{padding:0;color:#aaa}.status-item .likers em{max-width:300px;float:left;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow:hidden;zoom:1;font-style:normal;_width:expression((documentElement.clientWidth >300) ? "300px" : "auto" )}.status-item .created_at a{color:#999}.status-item .created_at a:hover{background:#999;color:#fff}.status-item .reshared_by{background:url(https://img3.doubanio.com/f/shire/870e5f02529b16ca8c1720ba386abea791a12fed/pics/icon/reshared-icon.gif) no-repeat left center;padding:0 0 0 18px;color:#66a366}.status-current .bd{border-color:#bfddb7}.video-player{position:relative;left:0;top:0;zoom:1}.video-player img{width:130px;height:97px;border:0 none}.video-player .video-overlay{width:130px;height:97px;position:absolute;top:0;left:0;background:url(https://img3.doubanio.com/f/shire/7225a635202dc7b623e16a8dd83e0c28e76bc0a4/pics/video_overlay.png);cursor:pointer}.video-player .video-overlay:hover{background-position:0 -97px}* html .video-player .video-overlay{background:none;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/pics/video_overlay_ie6.png')}.video-player .video-object{display:none}.layout-1 .attachments{display:inline}.layout-1 .media img{float:right;margin-left:12px;max-height:100px;max-width:100px;_width:expression((documentElement.clientWidth >100) ? "100px" : "auto" )}.layout-None blockquote,.layout-2 blockquote{width:auto}.layout-3 .album,.layout-3 .media,.layout-None .media{float:left;margin:0 10px 10px 0;background:none;padding:0}.layout-3 .album{height:100px;width:100px;line-height:100px;vertical-align:middle;text-align:center;background:url(https://img3.doubanio.com/f/shire/2845e06e4eea41dc937dc5fd8cc37fbc77046a4b/pics/albumback_s.gif) 1px 1px no-repeat;padding:5px 8px 8px 5px}.layout-3 .album img{max-height:100px;max-width:100px;_width:expression((documentElement.clientWidth >100) ? "100px" : "auto" )}.layout-3 blockquote{clear:both}.layout-4 .media{float:left;margin:0 14px 10px 0}.combined-statuses{margin:0 0 10px 63px;padding:0 0 8px 0;border-bottom:1px solid #eee}.comments .mention-highlighter{top:2px;width:300px;padding:2px 0}.status-item .allstar50,.status-item .allstar50,.status-item .allstar45,.status-item .allstar40,.status-item .allstar35,.status-item .allstar30,.status-item .allstar25,.status-item .allstar20,.status-item .allstar15,.status-item .allstar10,.status-item .allstar05{margin-left:5px}.group-pics{overflow:hidden;zoom:1}.group-pics img{cursor:pointer}.group-pics .group-pics-more{display:none}.group-pics .group-pic{margin-right:7px}.group-pics .text-more{cursor:pointer;color:#999}.group-pic{position:relative;display:inline-block;*display:inline;zoom:1;vertical-align:top}.group-pic a{display:none}.group-pics-small .group-pic{float:left;clear:both;min-width:32px;min-height:32px;margin:0 0 10px 0;line-height:0;font-size:0}.group-pics-small a{display:block;position:absolute;right:0;bottom:0;width:32px;height:32px;line-height:100em;text-align:center;overflow:hidden}.group-pics-small .group-pic a:link,.group-pics-small .group-pic a:visited,.group-pics-small .group-pic a:hover,.group-pics-small .group-pic a:active{opacity:.8;filter:alpha(opacity=80);background:url(https://img3.doubanio.com/f/sns/fbe9baba74d3637b0cca89380b58762a60ea6f82/pics/icon_zoom_in.png) no-repeat}.group-pics-small .group-pic a:hover{opacity:1;filter:alpha(opacity=100)}.group-pics-small .group-pics-more{display:block}.group-pics-small .text-more{display:none}
+
+
+
+#db-isay{position:relative;padding:0;margin:-5px 0 2em;*zoom:1;z-index:1}#db-isay .item{position:relative;z-index:0;margin-bottom:0;overflow:hidden}#submit_error{margin-top:10px}#db-isay .drag-tips{display:none;position:absolute;top:0;z-index:2;background:#fff;width:582px;height:78px;line-height:78px;font-size:16px;text-align:center;border:4px dashed #ccc;color:#999}#db-isay.drag textarea,#db-isay.drag label,#db-isay.drag p{visibility:hidden}#db-isay.drag .drag-tips{display:block}#db-isay.drag .drag-tips.over{background:#eee;color:#666}#db-isay.drag.act-pic textarea,#db-isay.drag.act-pic label,#db-isay.drag.act-pic p{visibility:visible}#db-isay.drag.act-pic textarea,#db-isay.drag.act-pic label,#db-isay.drag.act-pic p{visibility:visible}#db-isay.drag.act-pic .drag-tips{top:8px;left:8px;width:580px;height:94px;line-height:94px;border-width:3px}#db-isay:after{content:'\0020';clear:both;display:block}#db-isay label{position:absolute;margin:4px 0 0 6px;font-size:14px;color:#aaa;pointer-events:none;cursor:text}#db-isay #isay-label{margin:6px 0 0 9px}#db-isay textarea{background:transparent;width:556px;padding:7px 25px 7px 7px;_margin-top:-1px;height:16px;overflow:hidden;vertical-align:bottom;border:none;font-family:tahoma;line-height:1.3;position:relative;z-index:1;-webkit-transition:all 0.1s}#db-isay textarea.abs-out{position:absolute}#db-isay.active textarea{height:50px;padding-bottom:28px}#db-isay .item{border:1px solid #d7d7d7;border-radius:1px;-moz-border-radius:1px}#db-isay.active .item{border-color:#ccc}#db-isay .btn{float:none;width:auto;margin-right:0;text-align:right;background:#f4f4f4;padding:8px;border:1px solid #ccc;border-top:none;position:relative;_zoom:1}#db-isay .bn-flat{vertical-align:middle}#db-isay .bn-flat input{font-size:14px;overflow:visible;line-height:2.2;height:2.1em;_line-height:1;_height:1em;_padding-top:0.6em;_padding-bottom:0.3em}#db-isay .bn-flat input:focus{background:#e0e0e0}#db-isay.isay-disable .btn .bn-submit input{border-color:#b9b9b9 !important;background:#f0f0f0 !important;color:#999 !important;cursor:text}#db-isay.isay-disable .btn .bn-submit:hover{border-color:#bbb #bbb #999;text-shadow:none}#db-isay .bd{color:#999}#db-isay .msg{float:right;position:relative;line-height:2}#db-isay .field .error,#db-isay .waiting{line-height:27px}#isay-counter{display:inline-block;*display:inline;zoom:1;padding-right:10px;vertical-align:middle;color:#666;font-weight:600;font-size:16px}#isay-counter strong{color:#F92D09}#db-isay .field{display:none;position:relative;background:#fff;margin-top:-5px;_margin-top:-7px;z-index:1;_zoom:1;padding:8px;padding:5px 8px;border:1px solid #ccc;border-top-color:#e6e6e6}#db-isay .field label{font-size:12px}#db-isay .inp-text{width:450px;margin-right:5px;height:12px;padding:7px 4px 6px;line-height:12px;*padding:7px 4px 5px;*zoom:1;border:1px solid #ccc;color:#999;border-radius:1px;-moz-border-radius:1px}#db-isay .field .bn-flat{border-color:#ccc;-moz-border-radius:2px;border-radius:2px}#db-isay .field .bn-flat input{font-size:12px;overflow:visible}#db-isay .field .hd{height:22px;margin:0}#db-isay .field .hd input{height:12px;line-height:12px;outline:0;padding:3px 3px;*padding:4px 3px 2px;border:1px solid #ccc}#db-isay .field .hd .field-title{background:transparent;width:553px;height:16px;line-height:16px;padding:2px 0;border:0;color:#666}#db-isay .editable{color:#333;cursor:pointer}#db-isay .field .hd input.editable-over{background-color:#feff9f}#db-isay .field .active .inp-text{border-color:#9cf;color:#333;box-shadow:0 0 2px rgba(20,180,255,0.7)}#db-isay .field .active .bn-flat{border-color:#ccc}#db-isay .bn-x{border:0;background:none;cursor:pointer;color:#ccc;font:400 14px/0.9 tahoma;line-height:0.9;position:absolute;right:8px;top:5px}#db-isay .bn-x:hover,#db-isay .bn-x:active,#db-isay .bn-x:visited{color:#bec3c3;background:transparent}#db-isay .isay-close{_top:7px}#db-isay .ico{background:url(https://img3.doubanio.com/f/sns/e71739142a440df4d8a909826b0b7dba0fa66318/pics/sns/isay/isay_icons.3.png) no-repeat;background:url(https://img3.doubanio.com/f/sns/61977f467e6cbed313af1a65ce7d993439b9948f/pics/sns/isay/isay_icons.3.svg) no-repeat,none;display:inline-block;height:20px;width:18px;margin-right:12px;text-indent:999em;overflow:hidden;line-height:20px;color:#888;font-family:stheiti, tahoma, simsun, sans-serif}#db-isay .ico-link{background-position:0 -5px}#db-isay .ico-pic{background-position:0 -35px}#db-isay .ico-topic{background-position:-1px -65px}#db-isay .btn{display:none}#db-isay.active .btn,#db-isay.acting .field{display:block}#db-isay .tipmsg,#db-isay .bn-submit,#db-isay .isay-close{display:none}#db-isay.active .tipmsg,#db-isay.active .bn-submit,#db-isay.active .isay-close{display:inline-block}#db-isay .btn-group{position:absolute;top:36px;right:0;white-spacing:nowrap;font-size:0;z-index:1}#db-isay .btn-group *{font-size:12px}#db-isay.active .btn-group{position:relative;float:left;margin-top:-108px;margin-bottom:10px;margin-left:8px}#db-isay.active .btn-group .ico{width:auto;text-indent:0;padding-left:20px;margin-right:15px}#db-isay.active .btn-group .ico-pic{padding-left:21px}#db-isay.active .btn-group .ico-topic{padding-left:16px;margin-left:-5px}#db-isay .isay-links{position:relative;z-index:2;font-size:0;height:30px;line-height:30px}#db-isay .isay-links li{font-size:13px;display:inline-block;*display:inline;*zoom:1;padding-left:22px;margin-right:18px;background:url(https://img3.doubanio.com/f/sns/e71739142a440df4d8a909826b0b7dba0fa66318/pics/sns/isay/isay_icons.3.png) no-repeat;background:url(https://img3.doubanio.com/f/sns/61977f467e6cbed313af1a65ce7d993439b9948f/pics/sns/isay/isay_icons.3.svg) no-repeat,none}#db-isay.active .isay-links .active{position:relative}#db-isay.active .isay-links .active:after{display:none\9;content:"";position:absolute;bottom:-4px;left:30px;height:7px;width:7px;border:1px solid #ccc;border-width:1px 1px 0 0;background:#fff;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg)}#db-isay .isay-links .isay-main{background-position:0 -90px}#db-isay .isay-links .notes-link{background-position:0 -121px}#db-isay .isay-links .commodity-link{background-position:0 -151px}#db-isay .isay-links .active a,#db-isay .isay-links .active a:link,#db-isay .isay-links .active a:visited,#db-isay .isay-links .active a:active,#db-isay .isay-links .active a:hover{color:#111;background-color:transparent;cursor:default}#db-isay .isay-act{word-break:break-all}#db-isay .commodity-link{position:relative}#db-isay .commodity-link .publish-ways{display:none;font-size:0;position:absolute;top:30px;left:-50px;width:193px;background:#fff;border:1px solid #ccc;padding:10px 0;z-index:5}#db-isay .commodity-link .publish-ways .share,#db-isay .commodity-link .publish-ways .review{display:inline-block;*display:inline;*zoom:1;vertical-align:top;font-size:12px;padding:0 18px;line-height:1.62;width:60px;text-align:center}#db-isay .commodity-link .publish-ways .share a,#db-isay .commodity-link .publish-ways .review a{display:block;padding-top:50px}#db-isay .commodity-link .publish-ways .share a:link,#db-isay .commodity-link .publish-ways .share a:visited,#db-isay .commodity-link .publish-ways .share a:active,#db-isay .commodity-link .publish-ways .share a:hover,#db-isay .commodity-link .publish-ways .review a:link,#db-isay .commodity-link .publish-ways .review a:visited,#db-isay .commodity-link .publish-ways .review a:active,#db-isay .commodity-link .publish-ways .review a:hover{color:#111;background:url(https://img3.doubanio.com/f/sns/9b2f1bc1a3e26263f6926c92366ae17b843603d1/pics/dongxi/icons_publish.1.png) no-repeat 0 0}#db-isay .commodity-link .publish-ways .share{border:1px solid #e6e6e6;border-width:0 1px 0 0;-webkit-border-image:-webkit-linear-gradient(bottom, #fff 0%, #e6e6e6 40%, #e6e6e6 60%, #fff) 1 100%;-moz-border-image:-moz-linear-gradient(to bottom, #fff 0%, #e6e6e6 40%, #e6e6e6 60%, #fff) 1 100%;border-image:linear-gradient(0deg, #fff 0%, #e6e6e6 40%, #e6e6e6 60%, #fff) 1 100%}#db-isay .commodity-link .publish-ways .share a:link,#db-isay .commodity-link .publish-ways .share a:visited,#db-isay .commodity-link .publish-ways .share a:active,#db-isay .commodity-link .publish-ways .share a:hover{background-position:19px -74px}#db-isay .commodity-link .publish-ways .review a:link,#db-isay .commodity-link .publish-ways .review a:visited,#db-isay .commodity-link .publish-ways .review a:active,#db-isay .commodity-link .publish-ways .review a:hover{background-position:17px 9px}#db-isay .commodity-link .publish-ways .arr,#db-isay .commodity-link .publish-ways .arr-inner{width:0;height:0;overflow:hidden;position:absolute;border:8px dashed transparent;border-bottom:8px solid #ccc;top:-16px;left:88px}#db-isay .commodity-link .publish-ways .arr-inner{border:7px dashed transparent;border-bottom:7px solid #fff;top:-14px;left:89px}.act-share .bn-x{display:none}#db-isay.act-share .inp-text{width:470px}#db-isay.field-up .field{border-bottom:none;margin-top:0;border-top-color:#ccc}#db-isay.field-up .btn-group{visibility:hidden}#db-isay .waiting{color:#999}#db-isay .waiting{background:url(https://img3.doubanio.com/f/sns/b66b312561667597f59ae2ff465eb5e301b70046/pics/loading.gif) no-repeat 0 5px;padding-left:22px}.abs-out{position:absolute;left:-9999px;top:-9999px}.msg-wait{background:url(https://img3.doubanio.com/f/sns/b66b312561667597f59ae2ff465eb5e301b70046/pics/loading.gif) no-repeat 0 5px;padding-left:22px}#isay-upload{position:absolute;width:21px;height:22px;padding:0;overflow:hidden;right:38px;top:-1px;opacity:0}#isay-upload input{cursor:pointer;position:absolute;height:22px;right:0;margin:0;filter:alpha(opacity=0);-ms-filter:alpha(opacity=0)}#db-isay.active #isay-upload{right:64px;width:48px}.highlighter{margin:0;position:absolute;z-index:0;top:1px;left:1px;overflow:hidden;background:#fff;white-space:pre-wrap;word-wrap:break-word;color:transparent;*color:#fff;width:556px;padding:7px 25px 0 7px;height:16px;overflow:hidden;vertical-align:bottom;font-family:tahoma;line-height:1.3;border-radius:2px 2px 0 0;-moz-border-radius:2px 2px 0 0}.active .highlighter{height:auto}.highlighter code{font-family:tahoma;line-height:1.3;background-color:#d2e1f3;color:#d2e1f3;display:inline;padding:1px;margin:0 -1px -2px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px}.ua-ie8 .highlighter code{padding:0;margin:0}.error-highlighter{background:transparent}.error-highlighter code{background-color:#fcc;color:#fcc}a.usr-btn{display:inline-block;*display:inline;zoom:1;width:58px;padding:5px 0;line-height:1.2;text-align:center;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px}a.usr-btn:link,a.usr-btn:visited{color:#ca6445;background:#FAE9DA}a.usr-btn:hover,a.usr-btn:active{color:#d9896a;background:#fcefe3}a.usr-btn.selected:link,a.usr-btn.selected:visited{color:#fae7d6;background:#d9896a}#db-isay li.isay-tab-subject{background-image:url(https://img3.doubanio.com/f/sns/22acb524d483935122f910d5c0e048a9aed608f7/pics/isay/isay_icon_movie.png);background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAvVBMVEX///+PkZeeoKXS09WsrbLHyMuQkpiSlJny8vOho6jx8fLExcjP0NKVl53+/v7U1dfd3uDP0NORk5mSlJrV1tigoabU1NeYmp+TlZv29vfAwcSoqq/o6eq3uLyusLTt7e7DxMjJysz5+fq4ur26u7/LzM6foaaoqq6trrOtr7PFxsnCw8f8/PykparY2dulp6yUlpy0tbmTlJqdn6Te3uDg4eLg4OK/wMO7vcD6+vrb293BwsW1trq+v8KZmqBQlE/kAAAAAXRSTlMAQObYZgAAAJpJREFUeF5tzzUSw1AMhGHtMzOEmZmZc/9jRfI4VfJ3+pod0d/ci0otx6t9QbNgtnQgiPMbwIhoCphnAbvAsCa6sr9vDHVwKtbEkTAoc55UBDfRDm2GdEBUFnApREngSeQLdGiJA8MYQ28roHo6ZgwPcKvmMRD0ZXbPcCd6yWyfuIihS2EDSE+UVawCusM8MQwjE3vhWMj7+fwDzt4JOXta0ZUAAAAASUVORK5CYII=");background-position:1px 6px}.ss-hd{color:#333;position:relative;margin-bottom:10px}.ss-hd .carousel-controls{position:absolute;right:5px;top:0}.ss-hd .carousel-controls a{margin-left:5px}.ss-hd .prev-disable,.ss-hd .prev-disable:link,.ss-hd .prev-disable:hover,.ss-hd .prev-disable:visited,.ss-hd .next-disable,.ss-hd .next-disable:link,.ss-hd .next-disable:hover,.ss-hd .next-disable:visited{color:#999;background:none;cursor:default}.ss-hd .prev-disable{display:none !important}.ss-bd{margin:0 1px}.ss-subjects{height:150px;overflow:hidden}.ss-subjects li{width:79px;text-align:center;height:143px;overflow:hidden;margin:0 8px 10px;display:inline-block;vertical-align:top;line-height:1.5;zoom:1;*display:inline;*word-spacing:normal}.ss-subjects li img{width:70px;height:101px;max-height:104px;background:#f9f9f9 url(https://img3.doubanio.com/f/sns/a6980e5630cd9e11715c14fb2ca2bd0cc9abee4b/pics/movie-default-small.gif) no-repeat 50% 0;margin-bottom:5px}.ss-subjects .title{display:block;height:3em;overflow:hidden}.ss-subjects a{color:#444;display:inline-block}.ss-subjects a:hover{color:#444;background:none;opacity:0.8;filter:alpha(opacity=80)}#db-isay #isay-subject-qword{width:563px;margin-top:2px;margin-bottom:1.1em}#db-isay .active #isay-subject-qword{box-shadow:none;border-color:#bbb;outline:none;color:#333}.act-subject .item,.act-subject .bn-x{display:none}.act-subject #isay-act-field{border-bottom:1px solid #ccc}.step2 .item,.step2 .bn-x{display:block}.step2 #isay-act-field{border:0}.ss-subject{padding:3px 0;margin:0;overflow:hidden;zoom:1}.ss-subject p{margin:0.5em 0}.ss-subject .pic{line-height:0;float:left;margin:0 10px 2px 0}.ss-subject .pic img{width:52px;max-height:75px}.ss-subject .details{margin-left:62px}.ss-subject .usr-btn{margin:0 10px 0 0}.ss-subject h5,.ss-subject h5 a:link,.ss-subject h5 a:visited,.ss-subject h5 a:hover{color:#444;background:none}.ss-subject #stars{vertical-align:text-bottom}.ss-subject #rating a:hover{background:none}#db-isay input.waiting{padding-left:4px;background-position:99% 50%}.share-pic .pic{position:relative;overflow:hidden;font-size:0;white-space:nowrap;display:inline-block;max-height:none;width:107px;height:72px;position:relative;margin-top:10px}.share-pic .pic .pic-wrap{position:absolute;top:-20%;bottom:-20%;left:-100%;right:-100%;_top:0;_bottom:0;_left:0;_right:0;_width:300%;_height:140%;_margin:-20% 0 0 -100%;text-align:center;letter-spacing:-.31em;*letter-spacing:normal;*word-spacing:-.43em}.share-pic .pic .pic-wrap img{vertical-align:middle}.share-pic .pic .valign{display:inline-block;*display:inline;zoom:1;vertical-align:middle;width:0;height:100%;overflow:hidden}.share-pic .pic img{width:auto;max-width:107px;_width:107px}.share-pic .pic:hover,.share-pic .pic:focus,.share-pic .pic:active{cursor:pointer}.share-pic .pic:hover .remove-pic,.share-pic .pic:hover .btn-change,.share-pic .pic:focus .remove-pic,.share-pic .pic:focus .btn-change,.share-pic .pic:active .remove-pic,.share-pic .pic:active .btn-change{display:inline-block}.share-pic .pic:only-child:hover{cursor:default}#db-isay a.remove-pic{_display:inline-block;width:12px;height:12px;top:2px;right:2px;color:#fdfdfd;text-align:center;border-radius:50%}#db-isay a.remove-pic:link,#db-isay a.remove-pic:visited{color:#fdfdfd}#db-isay a.remove-pic:hover{background:#3f9958}#db-isay a.remove-pic:hover,#db-isay a.remove-pic:focus,#db-isay a.remove-pic:active{display:inline-block;color:#fdfdfd}#db-isay a.remove-pic:hover ~ .btn-change,#db-isay a.remove-pic:focus ~ .btn-change,#db-isay a.remove-pic:active ~ .btn-change{display:inline-block}a.btn-change{display:none;_display:inline-block;position:absolute;white-space:nowrap;bottom:3px;right:2px;padding:2px 7px;font-size:12px;line-height:1.2;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px}a.btn-change:link,a.btn-change:visited{color:#fff;background:#3f9958}a.btn-change:hover,a.btn-change:focus,a.btn-change:active{display:inline-block;color:#fff;background:#3f9958}.share-pic-choose{display:none;width:602px;margin:-5px -8px 0}.share-pic-choose h5{position:relative;border-bottom:1px solid #ccc;padding:5px 9px;font-size:13px;color:#444;background:#f4f4f4;z-index:2}.share-pic-choose ul{padding:10px 4px 0}.share-pic-choose li{overflow:hidden;display:inline-block;position:relative;width:79px;height:79px;margin:0 8px 10px;border:1px solid #ccc;text-align:center;vertical-align:top;line-height:1.5;zoom:1;*display:inline;*word-spacing:normal}.share-pic-choose li.active{background:#ccc}.share-pic-choose li.active:after{content:'';display:block;position:absolute;width:16px;height:16px;bottom:1px;right:1px;background:url(https://img3.doubanio.com/f/sns/61586afd886cdf723f44141d944debfcb1b88aa8/pics/icon_right.png) no-repeat;border:2px solid #fff;border-radius:50%}.share-pic-choose li img{width:auto;max-width:80px;_width:80px}#db-isay .share-pic-choose .bn-x{top:9px}#db-isay .isay-links .test.active:after{background:#f4f4f4}#db-isay .lnk-share-tools{position:absolute;left:10px;top:15px;line-height:1.4}#db-isay.isay-new{margin-top:32px}#db-isay.isay-new form{padding:4px 12px 12px;background:#f3f3f3}#db-isay.isay-new .isay-links{height:auto;padding:0 0 5px;line-height:1.62;text-align:center;_zoom:1}#db-isay.isay-new .isay-links li{width:70px;padding:0;margin:0 35px;background:none}#db-isay.isay-new .isay-links .active:after{bottom:-9px;border-color:#d5d5d5}#db-isay.isay-new .isay-links a{display:block;padding:45px 0 4px;background:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 23px 13px no-repeat;background-image:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png);background-image:-webkit-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-moz-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-ms-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-o-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);_background:url(https://img3.doubanio.com/f/sns/5fc20e77e71dfeb48517b5a39816407e74b473ec/pics/sns/isay/isay_icons.4_1.png) 23px 13px no-repeat}#db-isay.isay-new .isay-links a:link,#db-isay.isay-new .isay-links a:visited,#db-isay.isay-new .isay-links a:hover,#db-isay.isay-new .isay-links a:focus{color:#8F9197}#db-isay.isay-new .isay-links a:hover{color:#37a;background-color:#fff;background-position:23px -55px}#db-isay.isay-new .isay-links .isay-pic a{background-position:-50px 13px}#db-isay.isay-new .isay-links .isay-pic a:hover{background-position:-50px -55px}#db-isay.isay-new .isay-links .isay-share a{background-position:-122px 13px}#db-isay.isay-new .isay-links .isay-share a:hover{background-position:-122px -55px}#db-isay.isay-new .isay-links .notes-link a{background-position:-188px 13px}#db-isay.isay-new .isay-links .notes-link a:hover{background-position:-188px -55px}#db-isay.isay-new .commodity-link a{background-position:-256px 13px}#db-isay.isay-new .commodity-link a:hover{background-position:-256px -55px}#db-isay.isay-new .commodity-link .publish-ways{top:75px;left:-63px}#db-isay.isay-new .item{background:#fff}#db-isay.isay-new .bd{width:auto}#db-isay.isay-new textarea,#db-isay.isay-new .highlighter{width:546px}#db-isay.isay-new textarea,#db-isay.isay-new .btn{border:1px solid #d5d5d5}#db-isay.isay-new .btn{border-top:none;background:#fff;_zoom:1}#db-isay.isay-new .btn .btn-topic{position:absolute;top:-34px;right:10px;padding:2px 9px;color:#fff;font-family:Helvetica,Arial,sans-serif;background:#dedbdb;border-radius:4px}#db-isay.isay-new .field,#db-isay.isay-new .inp-text{border-color:#d5d5d5}#db-isay.isay-new .upload-section{width:556px}#db-isay.isay-new #isay-upload{width:85px;height:42px;right:auto;left:0;padding:0;background:none}#db-isay.isay-new #isay-upload input{height:42px}#db-isay.isay-new #isay-upload .swfupload{width:85px;height:42px}#db-isay.isay-new .btn-group{margin-top:-91px;margin-left:13px}#db-isay.isay-new .btn-group .ico-pic{padding:11px 14px 11px 42px;border-right:1px solid #d5d5d5;font-size:14px;background:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) -329px 8px no-repeat;background-image:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png);background-image:-webkit-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-moz-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-ms-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-o-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);_background:url(https://img3.doubanio.com/f/sns/5fc20e77e71dfeb48517b5a39816407e74b473ec/pics/sns/isay/isay_icons.4_1.png) -59px 9px no-repeat;color:#aaa}#db-isay.isay-new .field .inp-text{border:none;box-shadow:none}#db-isay.isay-new .field .bn-flat{border-color:#eee}#db-isay.isay-new .field .bn-flat input{color:#999;background:#fafafa}#db-isay.isay-new .field .bn-flat input:disabled{color:#d5d5d5}#db-isay.isay-new .pic-upload object{top:-148px;left:11px}#db-isay.isay-new .upload-section .upload-btn{width:556px}#db-isay.isay-new .bn-cta{overflow:hidden}#db-isay.isay-new .bn-cta input{border-color:#eee;padding:5px 13px;color:#629e71;font-size:12px;background:#edf4ed}#db-isay.isay-new .bn-cta input:focus{border-color:#d4e8d8;background:#e1ede1}#db-isay.isay-new.drag .drag-tips{width:556px}.isay-new .btn-group{visibility:hidden}.active .btn-group{visibility:visible}#db-isay.act-share .btn-topic{display:none}#db-isay.isay-new.has-commodity .isay-links li{margin:0 19px}
+
+.isay-act .item-photo{position:relative;display:inline-block;*display:inline;zoom:1;margin-right:10px;width:52px;height:52px;vertical-align:middle;overflow:hidden;text-align:center;border:1px solid #ccc;font-size:12px;letter-spacing:normal;word-spacing:normal}.isay-act .item-photo img{width:52px;height:52px}.isay-act .item-photo .progress{position:absolute;top:0;left:0;width:52px;height:52px;line-height:52px;font-size:13px;font-family:tahoma}.isay-act .item-photo .lnk-remove-photo{position:absolute;top:2px;right:2px;line-height:1;padding:0 2px}.isay-act .item-photo .lnk-remove-photo:link,.isay-act .item-photo .lnk-remove-photo:visited,.isay-act .item-photo .lnk-remove-photo:hover,.isay-act .item-photo .lnk-remove-photo:active{color:#fff;background-color:rgba(0,0,0,0.4);*background-color:#000;filter:alpha(opacity=40)}.isay-act .item-photo .lnk-remove-photo:hover,.isay-act .item-photo .lnk-remove-photo:active{background-color:rgba(0,0,0,0.8);*background-color:#000;filter:alpha(opacity=80)}.isay-act .add-photo{position:relative;display:inline-block;*display:inline;zoom:1;margin-right:10px;width:50px;height:50px;vertical-align:middle;overflow:hidden;text-align:center;letter-spacing:normal;word-spacing:normal;font-size:48px;font-weight:800;color:#ccc;border:2px dashed #ccc}.isay-act .add-photo i{position:absolute;top:50%;left:0;width:100%;text-align:center;line-height:1;margin-top:-.56em;font-family:tahoma}.isay-act .add-photo .uploader-input{position:absolute;top:0;left:0;cursor:pointer}.isay-act .add-photo .uploader-input input{padding:52px;width:52px;height:52px;opacity:0;filter:alpha(opacity=0);cursor:pointer}.isay-act .group-pics{font-size:0;letter-spacing:-.31em;*letter-spacing:normal;*word-spacing:-.43em;padding:5px 0;white-space:nowrap;width:566px;overflow:hidden}.isay-act .group-pics .error-msg{white-space:normal}.isay-act .circle-progress{border:none}.isay-act .circle-progress{position:relative;width:52px;height:52px;overflow:hidden;border-radius:50%}.isay-act .circle-progress i{position:absolute;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;top:0;left:0;width:52px;height:52px;border:5px solid;border-color:transparent transparent #ddd #ddd;border-radius:50%;border:none\9;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}.isay-act .circle-progress i:nth-child(1){z-index:2;border-color:transparent transparent #fff #fff}.isay-act .circle-progress i.circle-right{border-color:#ddd #ddd transparent transparent}.isay-act .circle-progress i:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}.isay-act .circle-progress i:nth-child(3){z-index:3;top:-1px;left:-1px;right:-1px;bottom:-1px;width:auto;height:auto;border:2px solid #fff}.isay-act .field-error{position:absolute;bottom:-34px;left:120px;color:#f30}.say-pics-tip{padding-top:6px;margin-bottom:-5px;font-size:12px}#db-isay .isay-links .isay-pic{background:url(https://img3.doubanio.com/f/sns/163f9c5a04b1e81186449554f759cb9ea798540d/pics/sns/isay/isay_icon_pic_t.png) 0 6px no-repeat;_background:url(https://img3.doubanio.com/f/sns/71e9464342ed297ecc27cead8d8228ed35d741d0/pics/sns/isay/isay_icon_pic.png) 0 6px no-repeat;background:url(https://img3.doubanio.com/f/sns/1931ea1504566997b7b93816547b07cea2ad8dea/pics/sns/isay/isay_icon_pic.svg) 0 6px no-repeat,none}#db-isay.act-pic .group-pics{padding:15px 0}#db-isay.act-pic .btn-group{visibility:hidden}.upload-section{position:relative;width:580px;height:94px;border:3px dashed #eee;margin:3px 0;text-align:center;color:#ccc;background:#fafafa}.upload-section:hover{background:#f4f4f4}.upload-section p{margin:70px 0 0;line-height:2}.upload-section .drag-tip{position:absolute;top:0;z-index:1;margin:0;text-align:left;text-indent:25px;background:url(https://img3.doubanio.com/f/sns/163f9c5a04b1e81186449554f759cb9ea798540d/pics/sns/isay/isay_icon_pic_t.png) transparent 5px -26px no-repeat;_background:url(https://img3.doubanio.com/f/sns/71e9464342ed297ecc27cead8d8228ed35d741d0/pics/sns/isay/isay_icon_pic.png) transparent 5px -26px no-repeat;background:url(https://img3.doubanio.com/f/sns/1931ea1504566997b7b93816547b07cea2ad8dea/pics/sns/isay/isay_icon_pic.svg) 5px -26px no-repeat,none}.upload-section .upload-btn{position:absolute;z-index:2;width:580px;height:94px;top:0;left:0;color:#999;font-size:14px;line-height:120px;background:url(https://img3.doubanio.com/f/sns/b769763f40ea76a555f317d6437e0cec7d0175d2/pics/sns/isay/isay_icon_pic_upload_t.png) transparent center 30% no-repeat;_background:url(https://img3.doubanio.com/f/sns/9536702157230416cacb24997f2fb79556a2a101/pics/sns/isay/isay_icon_pic_upload.png) transparent center 30% no-repeat;background:url(https://img3.doubanio.com/f/sns/5fb7ba441acad1f96db856431433ac10cd7eec1a/pics/sns/isay/isay_icon_pic_upload.svg) center 30% no-repeat,none}.upload-section .upload-btn:link,.upload-section .upload-btn:visited,.upload-section .upload-btn:hover{color:#999;background:url(https://img3.doubanio.com/f/sns/b769763f40ea76a555f317d6437e0cec7d0175d2/pics/sns/isay/isay_icon_pic_upload_t.png) transparent center 30% no-repeat;_background:url(https://img3.doubanio.com/f/sns/9536702157230416cacb24997f2fb79556a2a101/pics/sns/isay/isay_icon_pic_upload.png) transparent center 30% no-repeat;background:url(https://img3.doubanio.com/f/sns/5fb7ba441acad1f96db856431433ac10cd7eec1a/pics/sns/isay/isay_icon_pic_upload.svg) center 30% no-repeat,none}.field .topic-btn{display:none}.act-pic .field{position:relative}.act-pic .field .topic-btn{display:block;position:absolute;top:-34px;right:10px;padding:2px 9px;color:#fff;background:#dedbdb;border-radius:4px}.pic-upload{position:relative}.pic-upload input{display:none}.pic-upload object{position:absolute;top:-140px;left:4px}
+
+
+.status-item .description,
+.status-item .attachments,
+.status-item .actions,
+.status-item .others { padding-left: 0 }
+.status-item blockquote { margin-left: 0 }
+.status-item { border-bottom: 1px solid #eee; margin-bottom: 14px }
+.status-item .bd { border-bottom: 0 none; padding-bottom: 0; margin: 0; _width: 500px }
+.status-item .bd h5 { font-size: 14px }
+.status-item .calendar,
+.status-item .calendar:hover { color: #333; background: #f2f2f2; padding: 5px; display: block; text-align: center }
+.status-item .calendar em { display: block; font-size: 24px; line-height: 24px }
+.status-item .actions a.btn { color: None }
+.status-item .actions a.btn:hover { color: #fff }
+
+#db-isay{position:relative;padding:0;margin:-5px 0 2em;*zoom:1;z-index:1}#db-isay .item{position:relative;z-index:0;margin-bottom:0;overflow:hidden}#submit_error{margin-top:10px}#db-isay .drag-tips{display:none;position:absolute;top:0;z-index:2;background:#fff;width:582px;height:78px;line-height:78px;font-size:16px;text-align:center;border:4px dashed #ccc;color:#999}#db-isay.drag textarea,#db-isay.drag label,#db-isay.drag p{visibility:hidden}#db-isay.drag .drag-tips{display:block}#db-isay.drag .drag-tips.over{background:#eee;color:#666}#db-isay.drag.act-pic textarea,#db-isay.drag.act-pic label,#db-isay.drag.act-pic p{visibility:visible}#db-isay.drag.act-pic textarea,#db-isay.drag.act-pic label,#db-isay.drag.act-pic p{visibility:visible}#db-isay.drag.act-pic .drag-tips{top:8px;left:8px;width:580px;height:94px;line-height:94px;border-width:3px}#db-isay:after{content:'\0020';clear:both;display:block}#db-isay label{position:absolute;margin:4px 0 0 6px;font-size:14px;color:#aaa;pointer-events:none;cursor:text}#db-isay #isay-label{margin:6px 0 0 9px}#db-isay textarea{background:transparent;width:556px;padding:7px 25px 7px 7px;_margin-top:-1px;height:16px;overflow:hidden;vertical-align:bottom;border:none;font-family:tahoma;line-height:1.3;position:relative;z-index:1;-webkit-transition:all 0.1s}#db-isay textarea.abs-out{position:absolute}#db-isay.active textarea{height:50px;padding-bottom:28px}#db-isay .item{border:1px solid #d7d7d7;border-radius:1px;-moz-border-radius:1px}#db-isay.active .item{border-color:#ccc}#db-isay .btn{float:none;width:auto;margin-right:0;text-align:right;background:#f4f4f4;padding:8px;border:1px solid #ccc;border-top:none;position:relative;_zoom:1}#db-isay .bn-flat{vertical-align:middle}#db-isay .bn-flat input{font-size:14px;overflow:visible;line-height:2.2;height:2.1em;_line-height:1;_height:1em;_padding-top:0.6em;_padding-bottom:0.3em}#db-isay .bn-flat input:focus{background:#e0e0e0}#db-isay.isay-disable .btn .bn-submit input{border-color:#b9b9b9 !important;background:#f0f0f0 !important;color:#999 !important;cursor:text}#db-isay.isay-disable .btn .bn-submit:hover{border-color:#bbb #bbb #999;text-shadow:none}#db-isay .bd{color:#999}#db-isay .msg{float:right;position:relative;line-height:2}#db-isay .field .error,#db-isay .waiting{line-height:27px}#isay-counter{display:inline-block;*display:inline;zoom:1;padding-right:10px;vertical-align:middle;color:#666;font-weight:600;font-size:16px}#isay-counter strong{color:#F92D09}#db-isay .field{display:none;position:relative;background:#fff;margin-top:-5px;_margin-top:-7px;z-index:1;_zoom:1;padding:8px;padding:5px 8px;border:1px solid #ccc;border-top-color:#e6e6e6}#db-isay .field label{font-size:12px}#db-isay .inp-text{width:450px;margin-right:5px;height:12px;padding:7px 4px 6px;line-height:12px;*padding:7px 4px 5px;*zoom:1;border:1px solid #ccc;color:#999;border-radius:1px;-moz-border-radius:1px}#db-isay .field .bn-flat{border-color:#ccc;-moz-border-radius:2px;border-radius:2px}#db-isay .field .bn-flat input{font-size:12px;overflow:visible}#db-isay .field .hd{height:22px;margin:0}#db-isay .field .hd input{height:12px;line-height:12px;outline:0;padding:3px 3px;*padding:4px 3px 2px;border:1px solid #ccc}#db-isay .field .hd .field-title{background:transparent;width:553px;height:16px;line-height:16px;padding:2px 0;border:0;color:#666}#db-isay .editable{color:#333;cursor:pointer}#db-isay .field .hd input.editable-over{background-color:#feff9f}#db-isay .field .active .inp-text{border-color:#9cf;color:#333;box-shadow:0 0 2px rgba(20,180,255,0.7)}#db-isay .field .active .bn-flat{border-color:#ccc}#db-isay .bn-x{border:0;background:none;cursor:pointer;color:#ccc;font:400 14px/0.9 tahoma;line-height:0.9;position:absolute;right:8px;top:5px}#db-isay .bn-x:hover,#db-isay .bn-x:active,#db-isay .bn-x:visited{color:#bec3c3;background:transparent}#db-isay .isay-close{_top:7px}#db-isay .ico{background:url(https://img3.doubanio.com/f/sns/e71739142a440df4d8a909826b0b7dba0fa66318/pics/sns/isay/isay_icons.3.png) no-repeat;background:url(https://img3.doubanio.com/f/sns/61977f467e6cbed313af1a65ce7d993439b9948f/pics/sns/isay/isay_icons.3.svg) no-repeat,none;display:inline-block;height:20px;width:18px;margin-right:12px;text-indent:999em;overflow:hidden;line-height:20px;color:#888;font-family:stheiti, tahoma, simsun, sans-serif}#db-isay .ico-link{background-position:0 -5px}#db-isay .ico-pic{background-position:0 -35px}#db-isay .ico-topic{background-position:-1px -65px}#db-isay .btn{display:none}#db-isay.active .btn,#db-isay.acting .field{display:block}#db-isay .tipmsg,#db-isay .bn-submit,#db-isay .isay-close{display:none}#db-isay.active .tipmsg,#db-isay.active .bn-submit,#db-isay.active .isay-close{display:inline-block}#db-isay .btn-group{position:absolute;top:36px;right:0;white-spacing:nowrap;font-size:0;z-index:1}#db-isay .btn-group *{font-size:12px}#db-isay.active .btn-group{position:relative;float:left;margin-top:-108px;margin-bottom:10px;margin-left:8px}#db-isay.active .btn-group .ico{width:auto;text-indent:0;padding-left:20px;margin-right:15px}#db-isay.active .btn-group .ico-pic{padding-left:21px}#db-isay.active .btn-group .ico-topic{padding-left:16px;margin-left:-5px}#db-isay .isay-links{position:relative;z-index:2;font-size:0;height:30px;line-height:30px}#db-isay .isay-links li{font-size:13px;display:inline-block;*display:inline;*zoom:1;padding-left:22px;margin-right:18px;background:url(https://img3.doubanio.com/f/sns/e71739142a440df4d8a909826b0b7dba0fa66318/pics/sns/isay/isay_icons.3.png) no-repeat;background:url(https://img3.doubanio.com/f/sns/61977f467e6cbed313af1a65ce7d993439b9948f/pics/sns/isay/isay_icons.3.svg) no-repeat,none}#db-isay.active .isay-links .active{position:relative}#db-isay.active .isay-links .active:after{display:none\9;content:"";position:absolute;bottom:-4px;left:30px;height:7px;width:7px;border:1px solid #ccc;border-width:1px 1px 0 0;background:#fff;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg)}#db-isay .isay-links .isay-main{background-position:0 -90px}#db-isay .isay-links .notes-link{background-position:0 -121px}#db-isay .isay-links .commodity-link{background-position:0 -151px}#db-isay .isay-links .active a,#db-isay .isay-links .active a:link,#db-isay .isay-links .active a:visited,#db-isay .isay-links .active a:active,#db-isay .isay-links .active a:hover{color:#111;background-color:transparent;cursor:default}#db-isay .isay-act{word-break:break-all}#db-isay .commodity-link{position:relative}#db-isay .commodity-link .publish-ways{display:none;font-size:0;position:absolute;top:30px;left:-50px;width:193px;background:#fff;border:1px solid #ccc;padding:10px 0;z-index:5}#db-isay .commodity-link .publish-ways .share,#db-isay .commodity-link .publish-ways .review{display:inline-block;*display:inline;*zoom:1;vertical-align:top;font-size:12px;padding:0 18px;line-height:1.62;width:60px;text-align:center}#db-isay .commodity-link .publish-ways .share a,#db-isay .commodity-link .publish-ways .review a{display:block;padding-top:50px}#db-isay .commodity-link .publish-ways .share a:link,#db-isay .commodity-link .publish-ways .share a:visited,#db-isay .commodity-link .publish-ways .share a:active,#db-isay .commodity-link .publish-ways .share a:hover,#db-isay .commodity-link .publish-ways .review a:link,#db-isay .commodity-link .publish-ways .review a:visited,#db-isay .commodity-link .publish-ways .review a:active,#db-isay .commodity-link .publish-ways .review a:hover{color:#111;background:url(https://img3.doubanio.com/f/sns/9b2f1bc1a3e26263f6926c92366ae17b843603d1/pics/dongxi/icons_publish.1.png) no-repeat 0 0}#db-isay .commodity-link .publish-ways .share{border:1px solid #e6e6e6;border-width:0 1px 0 0;-webkit-border-image:-webkit-linear-gradient(bottom, #fff 0%, #e6e6e6 40%, #e6e6e6 60%, #fff) 1 100%;-moz-border-image:-moz-linear-gradient(to bottom, #fff 0%, #e6e6e6 40%, #e6e6e6 60%, #fff) 1 100%;border-image:linear-gradient(0deg, #fff 0%, #e6e6e6 40%, #e6e6e6 60%, #fff) 1 100%}#db-isay .commodity-link .publish-ways .share a:link,#db-isay .commodity-link .publish-ways .share a:visited,#db-isay .commodity-link .publish-ways .share a:active,#db-isay .commodity-link .publish-ways .share a:hover{background-position:19px -74px}#db-isay .commodity-link .publish-ways .review a:link,#db-isay .commodity-link .publish-ways .review a:visited,#db-isay .commodity-link .publish-ways .review a:active,#db-isay .commodity-link .publish-ways .review a:hover{background-position:17px 9px}#db-isay .commodity-link .publish-ways .arr,#db-isay .commodity-link .publish-ways .arr-inner{width:0;height:0;overflow:hidden;position:absolute;border:8px dashed transparent;border-bottom:8px solid #ccc;top:-16px;left:88px}#db-isay .commodity-link .publish-ways .arr-inner{border:7px dashed transparent;border-bottom:7px solid #fff;top:-14px;left:89px}.act-share .bn-x{display:none}#db-isay.act-share .inp-text{width:470px}#db-isay.field-up .field{border-bottom:none;margin-top:0;border-top-color:#ccc}#db-isay.field-up .btn-group{visibility:hidden}#db-isay .waiting{color:#999}#db-isay .waiting{background:url(https://img3.doubanio.com/f/sns/b66b312561667597f59ae2ff465eb5e301b70046/pics/loading.gif) no-repeat 0 5px;padding-left:22px}.abs-out{position:absolute;left:-9999px;top:-9999px}.msg-wait{background:url(https://img3.doubanio.com/f/sns/b66b312561667597f59ae2ff465eb5e301b70046/pics/loading.gif) no-repeat 0 5px;padding-left:22px}#isay-upload{position:absolute;width:21px;height:22px;padding:0;overflow:hidden;right:38px;top:-1px;opacity:0}#isay-upload input{cursor:pointer;position:absolute;height:22px;right:0;margin:0;filter:alpha(opacity=0);-ms-filter:alpha(opacity=0)}#db-isay.active #isay-upload{right:64px;width:48px}.highlighter{margin:0;position:absolute;z-index:0;top:1px;left:1px;overflow:hidden;background:#fff;white-space:pre-wrap;word-wrap:break-word;color:transparent;*color:#fff;width:556px;padding:7px 25px 0 7px;height:16px;overflow:hidden;vertical-align:bottom;font-family:tahoma;line-height:1.3;border-radius:2px 2px 0 0;-moz-border-radius:2px 2px 0 0}.active .highlighter{height:auto}.highlighter code{font-family:tahoma;line-height:1.3;background-color:#d2e1f3;color:#d2e1f3;display:inline;padding:1px;margin:0 -1px -2px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px}.ua-ie8 .highlighter code{padding:0;margin:0}.error-highlighter{background:transparent}.error-highlighter code{background-color:#fcc;color:#fcc}a.usr-btn{display:inline-block;*display:inline;zoom:1;width:58px;padding:5px 0;line-height:1.2;text-align:center;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px}a.usr-btn:link,a.usr-btn:visited{color:#ca6445;background:#FAE9DA}a.usr-btn:hover,a.usr-btn:active{color:#d9896a;background:#fcefe3}a.usr-btn.selected:link,a.usr-btn.selected:visited{color:#fae7d6;background:#d9896a}#db-isay li.isay-tab-subject{background-image:url(https://img3.doubanio.com/f/sns/22acb524d483935122f910d5c0e048a9aed608f7/pics/isay/isay_icon_movie.png);background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAvVBMVEX///+PkZeeoKXS09WsrbLHyMuQkpiSlJny8vOho6jx8fLExcjP0NKVl53+/v7U1dfd3uDP0NORk5mSlJrV1tigoabU1NeYmp+TlZv29vfAwcSoqq/o6eq3uLyusLTt7e7DxMjJysz5+fq4ur26u7/LzM6foaaoqq6trrOtr7PFxsnCw8f8/PykparY2dulp6yUlpy0tbmTlJqdn6Te3uDg4eLg4OK/wMO7vcD6+vrb293BwsW1trq+v8KZmqBQlE/kAAAAAXRSTlMAQObYZgAAAJpJREFUeF5tzzUSw1AMhGHtMzOEmZmZc/9jRfI4VfJ3+pod0d/ci0otx6t9QbNgtnQgiPMbwIhoCphnAbvAsCa6sr9vDHVwKtbEkTAoc55UBDfRDm2GdEBUFnApREngSeQLdGiJA8MYQ28roHo6ZgwPcKvmMRD0ZXbPcCd6yWyfuIihS2EDSE+UVawCusM8MQwjE3vhWMj7+fwDzt4JOXta0ZUAAAAASUVORK5CYII=");background-position:1px 6px}.ss-hd{color:#333;position:relative;margin-bottom:10px}.ss-hd .carousel-controls{position:absolute;right:5px;top:0}.ss-hd .carousel-controls a{margin-left:5px}.ss-hd .prev-disable,.ss-hd .prev-disable:link,.ss-hd .prev-disable:hover,.ss-hd .prev-disable:visited,.ss-hd .next-disable,.ss-hd .next-disable:link,.ss-hd .next-disable:hover,.ss-hd .next-disable:visited{color:#999;background:none;cursor:default}.ss-hd .prev-disable{display:none !important}.ss-bd{margin:0 1px}.ss-subjects{height:150px;overflow:hidden}.ss-subjects li{width:79px;text-align:center;height:143px;overflow:hidden;margin:0 8px 10px;display:inline-block;vertical-align:top;line-height:1.5;zoom:1;*display:inline;*word-spacing:normal}.ss-subjects li img{width:70px;height:101px;max-height:104px;background:#f9f9f9 url(https://img3.doubanio.com/f/sns/a6980e5630cd9e11715c14fb2ca2bd0cc9abee4b/pics/movie-default-small.gif) no-repeat 50% 0;margin-bottom:5px}.ss-subjects .title{display:block;height:3em;overflow:hidden}.ss-subjects a{color:#444;display:inline-block}.ss-subjects a:hover{color:#444;background:none;opacity:0.8;filter:alpha(opacity=80)}#db-isay #isay-subject-qword{width:563px;margin-top:2px;margin-bottom:1.1em}#db-isay .active #isay-subject-qword{box-shadow:none;border-color:#bbb;outline:none;color:#333}.act-subject .item,.act-subject .bn-x{display:none}.act-subject #isay-act-field{border-bottom:1px solid #ccc}.step2 .item,.step2 .bn-x{display:block}.step2 #isay-act-field{border:0}.ss-subject{padding:3px 0;margin:0;overflow:hidden;zoom:1}.ss-subject p{margin:0.5em 0}.ss-subject .pic{line-height:0;float:left;margin:0 10px 2px 0}.ss-subject .pic img{width:52px;max-height:75px}.ss-subject .details{margin-left:62px}.ss-subject .usr-btn{margin:0 10px 0 0}.ss-subject h5,.ss-subject h5 a:link,.ss-subject h5 a:visited,.ss-subject h5 a:hover{color:#444;background:none}.ss-subject #stars{vertical-align:text-bottom}.ss-subject #rating a:hover{background:none}#db-isay input.waiting{padding-left:4px;background-position:99% 50%}.share-pic .pic{position:relative;overflow:hidden;font-size:0;white-space:nowrap;display:inline-block;max-height:none;width:107px;height:72px;position:relative;margin-top:10px}.share-pic .pic .pic-wrap{position:absolute;top:-20%;bottom:-20%;left:-100%;right:-100%;_top:0;_bottom:0;_left:0;_right:0;_width:300%;_height:140%;_margin:-20% 0 0 -100%;text-align:center;letter-spacing:-.31em;*letter-spacing:normal;*word-spacing:-.43em}.share-pic .pic .pic-wrap img{vertical-align:middle}.share-pic .pic .valign{display:inline-block;*display:inline;zoom:1;vertical-align:middle;width:0;height:100%;overflow:hidden}.share-pic .pic img{width:auto;max-width:107px;_width:107px}.share-pic .pic:hover,.share-pic .pic:focus,.share-pic .pic:active{cursor:pointer}.share-pic .pic:hover .remove-pic,.share-pic .pic:hover .btn-change,.share-pic .pic:focus .remove-pic,.share-pic .pic:focus .btn-change,.share-pic .pic:active .remove-pic,.share-pic .pic:active .btn-change{display:inline-block}.share-pic .pic:only-child:hover{cursor:default}#db-isay a.remove-pic{_display:inline-block;width:12px;height:12px;top:2px;right:2px;color:#fdfdfd;text-align:center;border-radius:50%}#db-isay a.remove-pic:link,#db-isay a.remove-pic:visited{color:#fdfdfd}#db-isay a.remove-pic:hover{background:#3f9958}#db-isay a.remove-pic:hover,#db-isay a.remove-pic:focus,#db-isay a.remove-pic:active{display:inline-block;color:#fdfdfd}#db-isay a.remove-pic:hover ~ .btn-change,#db-isay a.remove-pic:focus ~ .btn-change,#db-isay a.remove-pic:active ~ .btn-change{display:inline-block}a.btn-change{display:none;_display:inline-block;position:absolute;white-space:nowrap;bottom:3px;right:2px;padding:2px 7px;font-size:12px;line-height:1.2;-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;border-radius:2px}a.btn-change:link,a.btn-change:visited{color:#fff;background:#3f9958}a.btn-change:hover,a.btn-change:focus,a.btn-change:active{display:inline-block;color:#fff;background:#3f9958}.share-pic-choose{display:none;width:602px;margin:-5px -8px 0}.share-pic-choose h5{position:relative;border-bottom:1px solid #ccc;padding:5px 9px;font-size:13px;color:#444;background:#f4f4f4;z-index:2}.share-pic-choose ul{padding:10px 4px 0}.share-pic-choose li{overflow:hidden;display:inline-block;position:relative;width:79px;height:79px;margin:0 8px 10px;border:1px solid #ccc;text-align:center;vertical-align:top;line-height:1.5;zoom:1;*display:inline;*word-spacing:normal}.share-pic-choose li.active{background:#ccc}.share-pic-choose li.active:after{content:'';display:block;position:absolute;width:16px;height:16px;bottom:1px;right:1px;background:url(https://img3.doubanio.com/f/sns/61586afd886cdf723f44141d944debfcb1b88aa8/pics/icon_right.png) no-repeat;border:2px solid #fff;border-radius:50%}.share-pic-choose li img{width:auto;max-width:80px;_width:80px}#db-isay .share-pic-choose .bn-x{top:9px}#db-isay .isay-links .test.active:after{background:#f4f4f4}#db-isay .lnk-share-tools{position:absolute;left:10px;top:15px;line-height:1.4}#db-isay.isay-new{margin-top:32px}#db-isay.isay-new form{padding:4px 12px 12px;background:#f3f3f3}#db-isay.isay-new .isay-links{height:auto;padding:0 0 5px;line-height:1.62;text-align:center;_zoom:1}#db-isay.isay-new .isay-links li{width:70px;padding:0;margin:0 35px;background:none}#db-isay.isay-new .isay-links .active:after{bottom:-9px;border-color:#d5d5d5}#db-isay.isay-new .isay-links a{display:block;padding:45px 0 4px;background:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 23px 13px no-repeat;background-image:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png);background-image:-webkit-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-moz-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-ms-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-o-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);_background:url(https://img3.doubanio.com/f/sns/5fc20e77e71dfeb48517b5a39816407e74b473ec/pics/sns/isay/isay_icons.4_1.png) 23px 13px no-repeat}#db-isay.isay-new .isay-links a:link,#db-isay.isay-new .isay-links a:visited,#db-isay.isay-new .isay-links a:hover,#db-isay.isay-new .isay-links a:focus{color:#8F9197}#db-isay.isay-new .isay-links a:hover{color:#37a;background-color:#fff;background-position:23px -55px}#db-isay.isay-new .isay-links .isay-pic a{background-position:-50px 13px}#db-isay.isay-new .isay-links .isay-pic a:hover{background-position:-50px -55px}#db-isay.isay-new .isay-links .isay-share a{background-position:-122px 13px}#db-isay.isay-new .isay-links .isay-share a:hover{background-position:-122px -55px}#db-isay.isay-new .isay-links .notes-link a{background-position:-188px 13px}#db-isay.isay-new .isay-links .notes-link a:hover{background-position:-188px -55px}#db-isay.isay-new .commodity-link a{background-position:-256px 13px}#db-isay.isay-new .commodity-link a:hover{background-position:-256px -55px}#db-isay.isay-new .commodity-link .publish-ways{top:75px;left:-63px}#db-isay.isay-new .item{background:#fff}#db-isay.isay-new .bd{width:auto}#db-isay.isay-new textarea,#db-isay.isay-new .highlighter{width:546px}#db-isay.isay-new textarea,#db-isay.isay-new .btn{border:1px solid #d5d5d5}#db-isay.isay-new .btn{border-top:none;background:#fff;_zoom:1}#db-isay.isay-new .btn .btn-topic{position:absolute;top:-34px;right:10px;padding:2px 9px;color:#fff;font-family:Helvetica,Arial,sans-serif;background:#dedbdb;border-radius:4px}#db-isay.isay-new .field,#db-isay.isay-new .inp-text{border-color:#d5d5d5}#db-isay.isay-new .upload-section{width:556px}#db-isay.isay-new #isay-upload{width:85px;height:42px;right:auto;left:0;padding:0;background:none}#db-isay.isay-new #isay-upload input{height:42px}#db-isay.isay-new #isay-upload .swfupload{width:85px;height:42px}#db-isay.isay-new .btn-group{margin-top:-91px;margin-left:13px}#db-isay.isay-new .btn-group .ico-pic{padding:11px 14px 11px 42px;border-right:1px solid #d5d5d5;font-size:14px;background:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) -329px 8px no-repeat;background-image:url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png);background-image:-webkit-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-moz-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-ms-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);background-image:-o-image-set(url(https://img3.doubanio.com/f/sns/f816446c44f2fc3fca8e96027353827e98ef0687/pics/sns/isay/isay_icons.4.png) 1x, url(https://img3.doubanio.com/f/sns/28691ffb329548b1a0cb18f0481a1eccb38bac0f/pics/sns/isay/isay_icons.4@2x.png) 2x);_background:url(https://img3.doubanio.com/f/sns/5fc20e77e71dfeb48517b5a39816407e74b473ec/pics/sns/isay/isay_icons.4_1.png) -59px 9px no-repeat;color:#aaa}#db-isay.isay-new .field .inp-text{border:none;box-shadow:none}#db-isay.isay-new .field .bn-flat{border-color:#eee}#db-isay.isay-new .field .bn-flat input{color:#999;background:#fafafa}#db-isay.isay-new .field .bn-flat input:disabled{color:#d5d5d5}#db-isay.isay-new .pic-upload object{top:-148px;left:11px}#db-isay.isay-new .upload-section .upload-btn{width:556px}#db-isay.isay-new .bn-cta{overflow:hidden}#db-isay.isay-new .bn-cta input{border-color:#eee;padding:5px 13px;color:#629e71;font-size:12px;background:#edf4ed}#db-isay.isay-new .bn-cta input:focus{border-color:#d4e8d8;background:#e1ede1}#db-isay.isay-new.drag .drag-tips{width:556px}.isay-new .btn-group{visibility:hidden}.active .btn-group{visibility:visible}#db-isay.act-share .btn-topic{display:none}#db-isay.isay-new.has-commodity .isay-links li{margin:0 19px}
+
+.isay-act .item-photo{position:relative;display:inline-block;*display:inline;zoom:1;margin-right:10px;width:52px;height:52px;vertical-align:middle;overflow:hidden;text-align:center;border:1px solid #ccc;font-size:12px;letter-spacing:normal;word-spacing:normal}.isay-act .item-photo img{width:52px;height:52px}.isay-act .item-photo .progress{position:absolute;top:0;left:0;width:52px;height:52px;line-height:52px;font-size:13px;font-family:tahoma}.isay-act .item-photo .lnk-remove-photo{position:absolute;top:2px;right:2px;line-height:1;padding:0 2px}.isay-act .item-photo .lnk-remove-photo:link,.isay-act .item-photo .lnk-remove-photo:visited,.isay-act .item-photo .lnk-remove-photo:hover,.isay-act .item-photo .lnk-remove-photo:active{color:#fff;background-color:rgba(0,0,0,0.4);*background-color:#000;filter:alpha(opacity=40)}.isay-act .item-photo .lnk-remove-photo:hover,.isay-act .item-photo .lnk-remove-photo:active{background-color:rgba(0,0,0,0.8);*background-color:#000;filter:alpha(opacity=80)}.isay-act .add-photo{position:relative;display:inline-block;*display:inline;zoom:1;margin-right:10px;width:50px;height:50px;vertical-align:middle;overflow:hidden;text-align:center;letter-spacing:normal;word-spacing:normal;font-size:48px;font-weight:800;color:#ccc;border:2px dashed #ccc}.isay-act .add-photo i{position:absolute;top:50%;left:0;width:100%;text-align:center;line-height:1;margin-top:-.56em;font-family:tahoma}.isay-act .add-photo .uploader-input{position:absolute;top:0;left:0;cursor:pointer}.isay-act .add-photo .uploader-input input{padding:52px;width:52px;height:52px;opacity:0;filter:alpha(opacity=0);cursor:pointer}.isay-act .group-pics{font-size:0;letter-spacing:-.31em;*letter-spacing:normal;*word-spacing:-.43em;padding:5px 0;white-space:nowrap;width:566px;overflow:hidden}.isay-act .group-pics .error-msg{white-space:normal}.isay-act .circle-progress{border:none}.isay-act .circle-progress{position:relative;width:52px;height:52px;overflow:hidden;border-radius:50%}.isay-act .circle-progress i{position:absolute;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;top:0;left:0;width:52px;height:52px;border:5px solid;border-color:transparent transparent #ddd #ddd;border-radius:50%;border:none\9;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}.isay-act .circle-progress i:nth-child(1){z-index:2;border-color:transparent transparent #fff #fff}.isay-act .circle-progress i.circle-right{border-color:#ddd #ddd transparent transparent}.isay-act .circle-progress i:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}.isay-act .circle-progress i:nth-child(3){z-index:3;top:-1px;left:-1px;right:-1px;bottom:-1px;width:auto;height:auto;border:2px solid #fff}.isay-act .field-error{position:absolute;bottom:-34px;left:120px;color:#f30}.say-pics-tip{padding-top:6px;margin-bottom:-5px;font-size:12px}#db-isay .isay-links .isay-pic{background:url(https://img3.doubanio.com/f/sns/163f9c5a04b1e81186449554f759cb9ea798540d/pics/sns/isay/isay_icon_pic_t.png) 0 6px no-repeat;_background:url(https://img3.doubanio.com/f/sns/71e9464342ed297ecc27cead8d8228ed35d741d0/pics/sns/isay/isay_icon_pic.png) 0 6px no-repeat;background:url(https://img3.doubanio.com/f/sns/1931ea1504566997b7b93816547b07cea2ad8dea/pics/sns/isay/isay_icon_pic.svg) 0 6px no-repeat,none}#db-isay.act-pic .group-pics{padding:15px 0}#db-isay.act-pic .btn-group{visibility:hidden}.upload-section{position:relative;width:580px;height:94px;border:3px dashed #eee;margin:3px 0;text-align:center;color:#ccc;background:#fafafa}.upload-section:hover{background:#f4f4f4}.upload-section p{margin:70px 0 0;line-height:2}.upload-section .drag-tip{position:absolute;top:0;z-index:1;margin:0;text-align:left;text-indent:25px;background:url(https://img3.doubanio.com/f/sns/163f9c5a04b1e81186449554f759cb9ea798540d/pics/sns/isay/isay_icon_pic_t.png) transparent 5px -26px no-repeat;_background:url(https://img3.doubanio.com/f/sns/71e9464342ed297ecc27cead8d8228ed35d741d0/pics/sns/isay/isay_icon_pic.png) transparent 5px -26px no-repeat;background:url(https://img3.doubanio.com/f/sns/1931ea1504566997b7b93816547b07cea2ad8dea/pics/sns/isay/isay_icon_pic.svg) 5px -26px no-repeat,none}.upload-section .upload-btn{position:absolute;z-index:2;width:580px;height:94px;top:0;left:0;color:#999;font-size:14px;line-height:120px;background:url(https://img3.doubanio.com/f/sns/b769763f40ea76a555f317d6437e0cec7d0175d2/pics/sns/isay/isay_icon_pic_upload_t.png) transparent center 30% no-repeat;_background:url(https://img3.doubanio.com/f/sns/9536702157230416cacb24997f2fb79556a2a101/pics/sns/isay/isay_icon_pic_upload.png) transparent center 30% no-repeat;background:url(https://img3.doubanio.com/f/sns/5fb7ba441acad1f96db856431433ac10cd7eec1a/pics/sns/isay/isay_icon_pic_upload.svg) center 30% no-repeat,none}.upload-section .upload-btn:link,.upload-section .upload-btn:visited,.upload-section .upload-btn:hover{color:#999;background:url(https://img3.doubanio.com/f/sns/b769763f40ea76a555f317d6437e0cec7d0175d2/pics/sns/isay/isay_icon_pic_upload_t.png) transparent center 30% no-repeat;_background:url(https://img3.doubanio.com/f/sns/9536702157230416cacb24997f2fb79556a2a101/pics/sns/isay/isay_icon_pic_upload.png) transparent center 30% no-repeat;background:url(https://img3.doubanio.com/f/sns/5fb7ba441acad1f96db856431433ac10cd7eec1a/pics/sns/isay/isay_icon_pic_upload.svg) center 30% no-repeat,none}.field .topic-btn{display:none}.act-pic .field{position:relative}.act-pic .field .topic-btn{display:block;position:absolute;top:-34px;right:10px;padding:2px 9px;color:#fff;background:#dedbdb;border-radius:4px}.pic-upload{position:relative}.pic-upload input{display:none}.pic-upload object{position:absolute;top:-140px;left:4px}
+
+
+#db-isay textarea { width: 546px; }
+#db-isay label { width: auto; }
+.block-song{display:inline-block;*display:inline;*zoom:1;vertical-align:top;min-width:228px;max-width:400px;_width:320px;margin:6px 0 0 0;border:1px solid #e7e7e5;white-space:nowrap}.block-song .pic{position:relative;display:inline-block;*display:inline;zoom:1;vertical-align:middle;width:64px;max-height:64px;_height:64px;margin-right:8px;*margin-right:7px;overflow:hidden;line-height:0;font-size:0}.block-song .pic i{position:absolute;top:0;bottom:0;left:0;right:0;_height:100%;background-position:50% 50%;background-repeat:no-repeat;background-image:url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png);background-image:-webkit-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);background-image:-moz-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);background-image:-ms-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);background-image:-o-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);opacity:0.8;filter:Alpha(Opacity=80);_background-image:url(https://img3.doubanio.com/f/shire/6dd140542bc4d9d0b61d1afba8610403bb3dc6f9/pics/timeline-player-cover-ie.png)}.block-song .pic:hover i{opacity:1;filter:Alpha(Opacity=100)}.block-song .pic img{width:64px;vertical-align:middle}.block-song .info{width:320px;display:inline-block;*display:inline;zoom:1;vertical-align:middle;padding-right:10px;overflow:hidden;zoom:1;word-wrap:break-word;color:#666}.block-song .info a.channel-name{display:inline-block;*display:inline;zoom:1;height:20px}.block-song .info a.channel-name p{height:20px;overflow:hidden;display:inline-block;zoom:1;*display:inline;text-overflow:ellipsis;white-space:nowrap}.block-song .title{margin:5px 0;font-size:14px}.song blockquote{margin-top:16px}.block-songlist{color:#666}.block-songlist .play-length{margin-left:5px;color:#999}.block-songlist .pic{position:relative;margin:4px 5px 0 60px;width:100px;max-height:100px;_height:100px;overflow:hidden}.block-songlist .pic img{width:100px}.block-songlist .pic i{position:absolute;top:0;bottom:0;left:0;right:0;_height:100%;background-position:50% 50%;background-repeat:no-repeat;background-image:url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png);background-image:-webkit-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);background-image:-moz-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);background-image:-ms-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);background-image:-o-image-set(url(https://img3.doubanio.com/f/shire/29a478366d210acff7a1b1fcecadf46893fd3353/pics/timeline-player-cover.png) 1x, url(https://img3.doubanio.com/f/shire/990331ed0f35e42d1b2dc958fe5ed9f0a834c19e/pics/timeline-player-cover@2x.png) 2x);opacity:0.8;filter:Alpha(Opacity=80);_background-image:url(https://img3.doubanio.com/f/shire/6dd140542bc4d9d0b61d1afba8610403bb3dc6f9/pics/timeline-player-cover-ie.png)}.block-songlist .pic:hover i{opacity:1;filter:Alpha(Opacity=100)}
+
+
+]]></style>
+  </head>
+  <body id="259235" data-site-url-for-json="https://site.douban.com/j/259235/" data-site-url="https://site.douban.com/259235/">
+    
+
+    <div class="wrapper">
+        <div id="header">
+            <div class="top-nav">
+                <a href="https://www.douban.com" class="logo">豆瓣</a>
+                
+
+
+
+
+
+
+
+<div class="top-nav-info">
+    
+    <a href="https://www.douban.com/accounts/login" rel="nofollow">登录</a>
+    <a href="https://www.douban.com/accounts/register">注册</a>
+</div>
+
+
+            </div>
+            
+
+            <div class="sp-nav">
+                <div class="sp-logo">
+                    <a href="https://site.douban.com/259235/" class="logo"><img src="https://img3.doubanio.com/pics/blank.gif" style="background:url(https://img3.doubanio.com/view/site/small/public/acbe542d78a04a1.jpg) no-repeat 0 0;" width="48" height="48" alt="未来事务管理局"/>未来事务管理局</a>
+                </div>
+                
+
+
+
+<div class="nav-items">
+
+    <ul><li id="current-room" class="on" data-url-for-json="https://site.douban.com/j/259235//room/39102206/">
+            <a href="https://site.douban.com/259235/room/39102206/" hidefocus="true">
+                <span>未来事务管理局前台</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://site.douban.com/259235/room/39133396/" hidefocus="true">
+                <span>不存在日报</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://site.douban.com/259235/room/39178029/" hidefocus="true">
+                <span>活动室</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://site.douban.com/259235/room/39129184/" hidefocus="true">
+                <span>档案馆</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://site.douban.com/259235/room/39251102/" hidefocus="true">
+                <span>42未来趋势研究中心</span>
+            </a>
+        </li>
+    </ul></div>
+
+
+
+            </div>
+            
+
+
+        </div>
+        <div id="content">
+            <div class="main">
+                
+                
+    <noscript>
+        <div class="message">
+            您的浏览器不支持javascript，不能使用此页面的全部功能。
+            请换用其他浏览器或者开启对javascript的支持。
+        </div>
+    </noscript>
+
+                
+
+                
+                
+                
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+    
+
+
+
+<div class="mod" id="bulletin-190246165">
+
+
+    <div class="hd">
+    
+
+    
+    
+    
+
+        
+    <h2>
+          <span>前台告示</span>
+            
+            
+
+            
+        
+
+            
+            
+
+            
+
+        <span class="pl">
+        </span>
+
+
+    </h2>
+
+
+    <div class="edit">
+        </div>
+    </div>
+
+<div class="bd">
+
+
+
+<div class="bulletin-content" id="link-report190246165" data-id="190246165">未来事务管理局是一个以“未来”为核心的科技文化品牌，以专业的眼光和特别的角度生产有趣的讯息，集结好玩的人。拥有新媒体平台《不存在日报》，图书出版品牌“果壳阅读”，以及线下活动“时间们”系列，科幻写作工作坊、影视IP开发等业务。<br/>希望通过「对人类信息的分析」以及「对人类新技术动向的研究」，影响未来。<br/><br/>Future Affairs Administration (FAA) is a technological/cultural brand for the future, producing information with professional opinions from a unique perspective. Current departments include the Non-Exist Media, sci-fi book publication Guokr Publishing, series of off-line activity “Shijianmen”, sci-fi writing club, IP production of film &amp; television, etc. With our efforts in “analyzing human information” and “researching new development of technology”, FAA is dedicated to influence the future.<br/><br/>不存在日报：<a rel="nofollow" href="https://www.douban.com/link2/?url=http%3A%2F%2Fweibo.com%2FFAAnews" target="_blank">http://weibo.com/FAAnews</a><br/>微信公众号：non-exist-FAA</div>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+<div class="mod" id="miniblog-190574896">
+
+
+    <div class="hd">
+    
+
+    
+    
+        
+    
+
+        
+    <h2>
+          <span>未来事务管理局的广播</span>
+            
+            
+
+            
+        
+
+            
+            
+            
+
+        <span class="pl">
+            
+                ( <a href="https://site.douban.com/259235/widget/miniblog/190574896/">全部</a> )
+        </span>
+
+
+    </h2>
+
+
+    <div class="edit">
+        </div>
+    </div>
+
+<div class="bd">
+
+
+
+<div class="miniblog-content">
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="stream-items">
+  
+  
+
+
+
+<div class="status-item" style="" data-sid="1879375259" data-action="0" data-target-type="rec" data-object-kind="1022" data-object-id="19213384">
+  <div class="mod" data-status-id="1879375259">
+    
+      <div class="hd">
+        <a href="https://site.douban.com/259235/status/1879375259/" class="calendar">八月<em>21</em></a>
+      </div>
+    
+    <div class="bd layout-3">
+        
+  
+  <p class="text">
+        推荐网址
+  </p>
+
+        
+
+    
+          <div class="attachments">
+            
+                
+                <a href="https://dou.bz/0WEKTl" class=" media" target="_blank" onclick="moreurl(this,{from: 'nmb-1879375259', action: '0', target_type: 'rec', object_kind: '1022'})"><img class="" src="https://img1.doubanio.com/view/status/small/public/0Ym4OX.jpg"/></a>
+          </div>
+            <h5><a href="https://dou.bz/0WEKTl" target="_blank" onclick="moreurl(this,{from: 'nmb-1879375259', action: '0', target_type: 'rec', object_kind: '1022'})">众望所归：郝景芳《北京折叠》喜获雨果奖最佳短中篇！</a></h5>
+            <p class="description">众望所归：郝景芳《北京折叠》喜获雨果奖最佳短中篇！&#13;
+未来局科幻办&#13;
+2016-08-21 13:16:57&#13;
+举报&#13;
+阅读数：375&#13;
+继《三体》之后，中国科幻作家再次登上科幻界最高荣誉领奖台！&#13;
+转发 5&#13;
+评论&#13;
+12快速开通微博你可以查看更多内容，...</p>
+
+        
+    <blockquote>
+      <p>《北京折叠》，2016年雨果奖最佳中短篇！</p>
+    </blockquote>
+
+
+
+      
+  <div class="actions">
+          <a href="https://site.douban.com/259235/status/1879375259/" class="btn btn-action-reply" data-action-type="showComments">回应</a>
+
+
+  </div>
+
+      <div class="others">
+        <div class="comments">
+          <div class="comments-items"/>
+            <span class="pl" align="right"><a class="j a_show_login" href="https://www.douban.com/accounts/register?reason=comment">&gt; 我来回应</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<div class="status-item" style="" data-sid="1879138566" data-action="1" data-target-type="site" data-object-kind="1015" data-object-id="577224486">
+  <div class="mod" data-status-id="1879138566">
+    
+      <div class="hd">
+        <a href="https://site.douban.com/259235/status/1879138566/" class="calendar">八月<em>20</em></a>
+      </div>
+    
+    <div class="bd layout-1">
+
+        
+
+    
+              <a href="https://site.douban.com/259235/widget/notes/190369979/note/577224486/" class="media" target="_self" onclick="moreurl(this,{from: 'nmb-1879138566', action: '1', target_type: 'site', object_kind: '1015'})"><img src="https://img1.doubanio.com/view/status/small/public/1suyFW.jpg"/></a>
+
+        
+  
+  <p class="text">
+        写了新日记
+  </p>
+
+
+              <h5><a href="https://site.douban.com/259235/widget/notes/190369979/note/577224486/">角逐雨果奖的《北京折叠》，重构我们深陷其中的城市</a></h5>
+              <div class="description">北京时间21日上午，2016年雨果奖将在堪萨斯城的世界科幻大会揭晓。郝景芳的《北京折叠》入围了短中篇单元。在《三体》之后，中国科幻作家有可能再次登上雨果奖的领奖台。 《北京折叠》构建了一个阶层高度分化的未来城市。故事里的北京...</div>
+        
+
+
+
+      
+  <div class="actions">
+          <a href="https://site.douban.com/259235/status/1879138566/" class="btn btn-action-reply" data-action-type="showComments">回应</a>
+
+
+  </div>
+
+      <div class="others">
+        <div class="comments">
+          <div class="comments-items"/>
+            <span class="pl" align="right"><a class="j a_show_login" href="https://www.douban.com/accounts/register?reason=comment">&gt; 我来回应</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<div class="status-item" style="" data-sid="1878595512" data-action="1" data-target-type="site" data-object-kind="1015" data-object-id="576954701">
+  <div class="mod" data-status-id="1878595512">
+    
+      <div class="hd">
+        <a href="https://site.douban.com/259235/status/1878595512/" class="calendar">八月<em>19</em></a>
+      </div>
+    
+    <div class="bd layout-1">
+
+        
+
+    
+              <a href="https://site.douban.com/259235/widget/notes/190369979/note/576954701/" class="media" target="_self" onclick="moreurl(this,{from: 'nmb-1878595512', action: '1', target_type: 'site', object_kind: '1015'})"><img src="https://img3.doubanio.com/view/status/small/public/1HQOuP.jpg"/></a>
+
+        
+  
+  <p class="text">
+        写了新日记
+  </p>
+
+
+              <h5><a href="https://site.douban.com/259235/widget/notes/190369979/note/576954701/">小径分叉的花园——数学推演下人类社会的混沌未来</a></h5>
+              <div class="description">在阿西莫夫的《基地》系列中，当人口达到百兆数量级后，就可以依据统计学计算，来预测整个社会的发展，给未来的各种可能性加上一个明确的数值。这种庞大而复杂的学科体系，在《基地》系列中被称为“心灵史学”（又译作“心理史学”）...</div>
+        
+
+
+
+      
+  <div class="actions">
+          <a href="https://site.douban.com/259235/status/1878595512/" class="btn btn-action-reply" data-action-type="showComments">回应</a>
+
+
+  </div>
+
+      <div class="others">
+        <div class="comments">
+          <div class="comments-items"/>
+            <span class="pl" align="right"><a class="j a_show_login" href="https://www.douban.com/accounts/register?reason=comment">&gt; 我来回应</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<div class="status-item" style="" data-sid="1877794757" data-action="1" data-target-type="site" data-object-kind="1015" data-object-id="576545963">
+  <div class="mod" data-status-id="1877794757">
+    
+      <div class="hd">
+        <a href="https://site.douban.com/259235/status/1877794757/" class="calendar">八月<em>17</em></a>
+      </div>
+    
+    <div class="bd layout-1">
+
+        
+
+    
+              <a href="https://site.douban.com/259235/widget/notes/190369979/note/576545963/" class="media" target="_self" onclick="moreurl(this,{from: 'nmb-1877794757', action: '1', target_type: 'site', object_kind: '1015'})"><img src="https://img3.doubanio.com/view/status/small/public/18E9Zg.jpg"/></a>
+
+        
+  
+  <p class="text">
+        写了新日记
+  </p>
+
+
+              <h5><a href="https://site.douban.com/259235/widget/notes/190369979/note/576545963/">休斯顿，我们这儿来了一支pop乐队</a></h5>
+              <div class="description">昨夜，世界上第一颗量子卫星“墨子”拖长了尾焰，从酒泉发射中心飞入夜空。就这样“嗖”地一下，那些对科幻作品里“量子瞬移/通讯”的期待，再次被暗暗点燃，就连宇宙本身，也好像稍稍近了一些。 这种对太空、飞行和探险的妄想，我们...</div>
+        
+
+
+
+      
+  <div class="actions">
+          <a href="https://site.douban.com/259235/status/1877794757/" class="btn btn-action-reply" data-action-type="showComments">回应</a>
+
+
+  </div>
+
+      <div class="others">
+        <div class="comments">
+          <div class="comments-items"/>
+            <span class="pl" align="right"><a class="j a_show_login" href="https://www.douban.com/accounts/register?reason=comment">&gt; 我来回应</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<div class="status-item" style="" data-sid="1877475989" data-action="1" data-target-type="site" data-object-kind="1015" data-object-id="576388719">
+  <div class="mod" data-status-id="1877475989">
+    
+      <div class="hd">
+        <a href="https://site.douban.com/259235/status/1877475989/" class="calendar">八月<em>16</em></a>
+      </div>
+    
+    <div class="bd layout-1">
+
+        
+
+    
+              <a href="https://site.douban.com/259235/widget/notes/190369979/note/576388719/" class="media" target="_self" onclick="moreurl(this,{from: 'nmb-1877475989', action: '1', target_type: 'site', object_kind: '1015'})"><img src="https://img3.doubanio.com/view/status/small/public/29lFSS.jpg"/></a>
+
+        
+  
+  <p class="text">
+        写了新日记
+  </p>
+
+
+              <h5><a href="https://site.douban.com/259235/widget/notes/190369979/note/576388719/">用14天造个僵尸，谈回恋爱，玩少女养成，帮AI造反</a></h5>
+              <div class="description">“只有他们才会打破那些固执己见的东西。”北师大艺术与传媒学院副院长王宜文这样形容那些年轻人。 上个月底，未来事务管理局联合北京师范大学艺术与传媒学院举办的科幻短片工作坊举行了结业典礼。在为期十四天的集训中，不同年级的本...</div>
+        
+
+
+
+      
+  <div class="actions">
+          <a href="https://site.douban.com/259235/status/1877475989/" class="btn btn-action-reply" data-action-type="showComments">回应</a>
+
+
+  </div>
+
+      <div class="others">
+        <div class="comments">
+          <div class="comments-items"/>
+            <span class="pl" align="right"><a class="j a_show_login" href="https://www.douban.com/accounts/register?reason=comment">&gt; 我来回应</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sp-rec-room" class="mod">
+<div class="bd">
+    
+    
+
+
+
+
+
+
+
+
+    <div class="rec-sec">
+
+    <span class="rec">
+
+<a data-user_id="0" href="https://www.douban.com/accounts/register?reason=collect" share-id="39102206" data-mode="plain" data-name="未来事务管理局小站的房间 － 未来事务管理局前台" data-type="com.douban.site" data-desc="2676人关注 / 把未来管起来。&#10;FAA is watching you." data-href="https://site.douban.com/259235/room/39102206/" data-image="" data-properties="{&quot;href&quot;:&quot;https:\/\/site.douban.com\/259235\/&quot;,&quot;name&quot;:&quot;未来事务管理局&quot;,&quot;uid&quot;:&quot;259235&quot;}" data-redir="https://site.douban.com/static/dshare_proxy.html" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="2011" data-object_id="39102206" data-target_type="rec" data-target_action="0" data-action_props="{&quot;url&quot;:&quot;https:\/\/site.douban.com\/259235\/room\/39102206\/&quot;,&quot;title&quot;:&quot;未来事务管理局-未来事务管理局前台&quot;}" data-btn_text="推荐" data-heading="推荐到豆瓣" data-sanity_key="_606b1" class="j a_show_login lnk-sharing lnk-douban-sharing">推荐</a>
+</span>
+        <span class="rec-num">3人</span>
+</div>
+
+</div>
+</div>
+
+
+
+
+            </div>
+            <div class="aside">
+                
+
+
+
+
+
+
+
+<div class="mod" id="sp-user">
+    <div class="bd">
+        <div class="user-pic">
+            <img alt="未来事务管理局" src="https://img3.doubanio.com/view/site/large/public/4e427ae6631cf11.jpg"/></div>
+        <div class="site-follow">
+            <a href="https://www.douban.com/accounts/register?reason=like" class="lnk-follow j a_show_login">关注</a>
+            
+            <input id="followed" type="hidden" value="0"/></div>
+        <div class="desc">
+            把未来管起来。<br/>FAA is watching you.
+        </div>
+        
+    <div class="share" id="share-site">
+        <p>
+        
+        <strong class="title">分享小站</strong>
+        <span title="豆瓣广播" class="shuo"><a href="" class="j a_show_login"> </a></span>
+        <span title="新浪微博" class="sina"><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=3015934887',u=z||d.location,p=['&amp;url=',e(u),'&amp;title=',e(t||d.title),'&amp;source=',e(r),'&amp;sourceUrl=',e(l),'&amp;content=',c||'gb2312','&amp;pic=',encodeURI('https://img3.doubanio.com/view/site/large/public/4e427ae6631cf11.jpg')].join('');function%20a(){var%20_url='https://www.douban.com/link2?type=redir&amp;vendor=bshare_sina&amp;url='+e([f,p].join(''));if(!window.open(_url,'mb',['toolbar=0,status=0,resizable=1,width=640,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=_url;};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','','推荐未来事务管理局的豆瓣小站','https://site.douban.com/259235/','utf-8'));"> </a></span>
+        <span title="腾讯微博" class="tqq"><a href="javascript:void((function(){var f='推荐未来事务管理局的豆瓣小站';var c='https://site.douban.com/259235/';var e=encodeURI('1459b2ac3d2345d2a17396eec5ad3bd7');var b=encodeURI('https://img3.doubanio.com/view/site/large/public/4e427ae6631cf11.jpg');var a='';var d='http://v.t.qq.com/share/share.php?url='+c+'&amp;appkey='+e+'&amp;site='+a+'&amp;pic='+b+'&amp;title='+f;window.open('https://www.douban.com/link2?type=redir&amp;vendor=bshare_tx&amp;url=' + encodeURIComponent(d),'','width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no')})());"> </a></span>
+        </p>
+    </div>
+
+        <div class="site-info">
+            
+
+                
+                
+
+
+
+
+
+
+<div class="mod host-card" id="sp-user-card">
+  <div class="hd">
+	<div class="title">
+	  <a target="_blank" href="https://www.douban.com/location/">豆瓣同城·主办方</a>
+	</div>
+  </div>
+
+  <div class="bd">
+	<div>
+	  城市：
+	      
+          <a href="https://beijing.douban.com/">北京</a>
+	</div>
+	<div>
+    类型：
+    
+      
+      <a href="https://beijing.douban.com/events/week-competition">赛事</a>
+      
+      <a href="https://beijing.douban.com/events/week-film">电影</a>
+      
+      <a href="https://beijing.douban.com/events/week-others">其他</a>
+      
+      <a href="https://beijing.douban.com/events/week-salon">讲座</a>
+    </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="db-followers" class="mod">
+  <div class="hd">
+    
+    <h2>
+          <span>关注该小站的成员</span>
+
+
+        <span class="pl">
+                ( <a href="https://site.douban.com/259235/followers/">2676</a> )
+        </span>
+
+
+    </h2>
+
+  </div>
+      
+<div class="bd">
+    
+
+<ul class="list-s"><li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/141603101/" class="nbg"><img src="https://img3.doubanio.com/icon/u141603101-4.jpg" class="imgg" alt="Lily.W" title="Lily.W"/></a> 
+    </div>
+    
+    </li>
+    
+    <li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/moQing/" class="nbg"><img src="https://img1.doubanio.com/icon/u1412102-79.jpg" class="imgg" alt="坊间传闻失控" title="坊间传闻失控"/></a> 
+    </div>
+    
+    </li>
+    
+    <li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/68873787/" class="nbg"><img src="https://img3.doubanio.com/icon/u68873787-3.jpg" class="imgg" alt="Azoth" title="Azoth"/></a> 
+    </div>
+    
+    </li>
+    
+    <li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/sunseawind/" class="nbg"><img src="https://img3.doubanio.com/icon/u3718850-70.jpg" class="imgg" alt="静灵" title="静灵"/></a> 
+    </div>
+    
+    </li>
+    
+    <li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/82337999/" class="nbg"><img src="https://img3.doubanio.com/icon/u82337999-4.jpg" class="imgg" alt="雅罗柯希莫" title="雅罗柯希莫"/></a> 
+    </div>
+    
+    </li>
+    
+    <li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/142364543/" class="nbg"><img src="https://img3.doubanio.com/icon/u142364543-3.jpg" class="imgg" alt="江启" title="江启"/></a> 
+    </div>
+    
+    </li>
+    
+    <li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/105722313/" class="nbg"><img src="https://img1.doubanio.com/icon/u105722313-7.jpg" class="imgg" alt="LN" title="LN"/></a> 
+    </div>
+    
+    </li>
+    
+    <li>
+    <div class="pic">
+        <a href="https://www.douban.com/people/misstroublez/" class="nbg"><img src="https://img3.doubanio.com/icon/u58940369-12.jpg" class="imgg" alt="higanbana" title="higanbana"/></a> 
+    </div>
+    
+    </li>
+</ul></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="db-ad">
+        
+        <div id="dale_site_host_right_bottom"/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="extra">
+                
+
+
+
+<div class="extra">
+</div>
+
+
+            </div>
+        </div>
+        
+<div id="footer">
+    
+
+<div class="db-inc">
+<span class="about">
+    <a href="https://www.douban.com/about">关于豆瓣</a>
+    · <a href="https://www.douban.com/jobs">在豆瓣工作</a>
+    · <a href="https://www.douban.com/about?topic=contactus">联系我们</a>
+    · <a href="https://www.douban.com/about?policy=disclaimer">免责声明</a>
+    · <a href="https://www.douban.com/help/">帮助中心</a>
+    · <a href="https://www.douban.com/doubanapp/">移动应用</a>
+    · <a href="https://www.douban.com/partner/">豆瓣广告</a>
+
+</span>
+<span class="copyright">
+    © 2005－2016 douban.com, all rights reserved
+</span>
+
+
+</div>
+
+</div>
+
+    </div>
+    <div class="bg"> <div class="mask"> </div></div>
+
+    <script type="text/javascript"><![CDATA[
+    /* for room nav */
+    Do(function () {
+        $('.nav-items .opt > a').click(function (e) {
+            // 不显示管理菜单
+            if (e.target.id === 'admin-icon') {
+              return;
+            }
+            var self = this;
+            $(this).next().show().blur_hide();
+            if (!$('ul', this).is(':hidden')) {
+                if (roomHoverColor) {
+                    $(this).css('background-color', roomHoverColor);
+                }
+                $(this).addClass('admin-icon-active');
+            }
+            $(document.body).click(function (e) {
+                if (e.target.id !== 'admin-icon') {
+                    $(self).removeAttr('class');
+                }
+                if (e.target.id !== 'more-icon' && roomHoverColor) {
+                    $(self).removeAttr('style');
+                }
+            });
+            e.preventDefault();
+        });
+    });
+]]></script><script type="text/javascript"><![CDATA[
+
+
+Do('common', function(){
+
+$(function(){
+$('.a_show_video').click(function(e){
+    var o = $(e.currentTarget),
+    eid = paras(o.attr('href'))['from'],
+    overlay = $('<div class="video_overlay"></div>'),
+    fhtml = $('img',o).attr('name'),
+    closebtn = $('<a href="javascript:void(0)">缩进</a>');
+
+    e.preventDefault();
+
+    $('div',o).append(overlay);
+    o.css('position','relative');
+
+    if (typeof eid != 'undefined') {
+      $.get("/j/recommend?from=" + eid);
+    }
+    closebtn.click(function(){
+     o.show();
+     $(this).prev().remove();
+     $(this).remove();
+    });
+
+    o.after(closebtn).after($('<em>'+fhtml+'</em>'));
+    o.hide();
+});
+});
+
+Douban.init_del_reply = function(e){
+  e.click(function(e){
+    var url = '/j/saying_comment?sid={id}&del_comment={cid}', ids = this.name.split('-');
+    if(confirm(this.title)){
+      $.getJSON(url.replace('{id}', ids[1]).replace('{cid}', ids[2]),
+      $.proxy(function(r){
+        $(this).closest('div').fadeOut();
+      }, this));
+    }
+    return false;
+  });
+};
+
+Douban.init_reply_form = function(frm){
+    var n = frm.attr('name'), is_in_process = frm.data('is_in_process');
+    if (is_in_process) {
+      return;
+    }
+    frm.attr('action', frm.attr('rev'));
+    frm.submit(function(){
+        var replst;
+    frm.data('is_in_process', 1);
+        Douban.remote_submit_json(this, function(r){
+        var a;
+            replst = frm.parent();
+            replst.html(r.html);
+        if (n=='n'){
+          a = $('<span><a href="javascript:void(0)">添加回应</a></span>');
+        }
+        else
+        {
+              a = $('<span><a href="javascript:void(0)">添加回应</a></span>');
+        }
+           $('form', replst).hide().after(a);
+           a.click(function(){
+                $(this).prev().show();
+                $(this).remove();
+           });
+       replst.parent().find('.a_saying_reply').attr('rev', replst.find('.simplelst').length + '回应');
+       Douban.init_del_reply(replst.find('.a_confirm_link'));
+       Douban.init_reply_form(replst.find('form'));
+       replst.find('form').data('is_in_process', 0);
+        });
+        $(':submit',frm).attr('disabled', 1);
+        return false;
+    });
+    frm.set_len_limit(140);
+};
+
+// show reply list.
+Douban.init_saying_reply = function(e){
+    var o = $(this),
+    _ = o.attr('name').split('-'),
+    is_hide = o.attr('rev') === 'unfold' || o.attr('rev') === '',
+    url = '/j/saying_comment',
+    is_in_process = o.data('is_in_process');
+
+    if (is_in_process) {
+      return;
+    }
+
+    if(!is_hide){
+        o.parent().parent().next().remove();
+        o.html(o.attr('rev'));
+        o.attr('rev', 'unfold');
+    } else {
+        o.data('is_in_process', 1);
+        $.getJSON(url, {sid: _[2], type: _[3], n:_[4], ni:_[5]}, function(r){
+          var list;
+          list = $('<div class="recreplylst"></div>').insertAfter(o.parent().parent()).html(r.html);
+          o.attr('rev', o.html());
+          o.text('隐藏回应');
+          Douban.init_del_reply(list.find('.a_confirm_link'));
+          Douban.init_reply_form(list.find('form'));
+          o.data('is_in_process', 0);
+        });
+    }
+};
+
+/* follow site */
+$('.follow-miniblog').click(function (e) {
+    e.preventDefault();
+    $.post_withck(
+        '/j/site/' + $('body').attr('id') + '/follow',
+        function (o) {
+            location.reload();
+        }
+    );
+});
+
+/* cancel follow */
+$('.unfollow-miniblog').click(function (e) {
+    e.preventDefault();
+    $.post_withck(
+        '/j/site/' + $('body').attr('id') + '/unfollow',
+        function (o) {
+            location.reload();
+        }
+    );
+});
+
+Do('artistplayer', function () {
+   $('.song-play').click(function (e) {
+       e.preventDefault();
+       artistsPlayer.play($(this).data('sid'));
+   });
+});
+
+});
+
+Do.add('tagsug', {path: 'https://img3.doubanio.com/f/shire/4605e734f440a79abdf4866eb4e6c785dfefbba1/js/lib/tagsug.js', type: 'js'});
+Do('https://img3.doubanio.com/f/sns/840b161fc6bbeca6a19900a150e03e47c8d90c71/js/sns/doulist/doulist_item.js', function(){
+  var actions=$(".doulist-actions");actions.parent(".bd").each(function(a,d){var b=$(this),e=b.find(".doulist-actions").data("item-id");var c=new DoulistItem($(this),e);c.init()});
+});
+Do('https://img3.doubanio.com/f/shire/5c464ea197e4305802fca8b23717a4f9aa53ceb2/js/statuses.js', function(){
+  var uid='';
+$(function(){var a=$(".stream-items");window.crt_uid=window.crt_uid||((typeof uid==="undefined")?"":uid);a.find(".mod").each(function(c,e){var d=$(this),f=d.attr("data-status-id");var b=new Status($(this),f);b.init()});a.find(".btn[data-action-type=expend-all]").click(function(b){b.preventDefault();$(this).parent().prevAll(".status-item").show().end().remove()});a.delegate(".video-overlay","click",function(b){if($(this).hasClass("no-expand")){return true}$(this).next(".video-object").show();$(b.target).hide().prev().hide()}).delegate(".video-object .back","click",function(b){b.preventDefault();$(this).parent().hide().prevAll().show()}).delegate(".bd blockquote a, .comments-items a:not(.btn)","click",function(h){var f=$(h.target).parents(".status-item");var b=f.attr("data-sid");var g=f.attr("data-action");var d=f.attr("data-target-type");var c=f.attr("data-object-kind");moreurl(this,{from:"nmbp-"+b,action:g,target_type:d,object_kind:c})})});
+});
+
+(function() {
+  // a very simple asynchronous js loader
+// @author: ktmud
+window.Do = window.Do || function(fn) {
+  typeof fn == 'function' && setTimeout(fn, 0);
+};
+Do.add_js = function add_js(src) {
+  var x = document.createElement('script');
+  x.src = src;
+  document.getElementsByTagName('head')[0].appendChild(x);
+};
+Do.add_css = function add_css(src, cb) {
+  var x = document.createElement('link');
+  x.rel = 'stylesheet';
+  x.href = src;
+  document.getElementsByTagName('head')[0].appendChild(x);
+};
+Do.check_js = function check_js(indicator, callback) {
+  var indicator_ret = indicator();
+  if (indicator_ret) {
+    callback(indicator_ret);
+  } else {
+    setTimeout(function() {
+      check_js(indicator, callback);
+    }, 33);
+  }
+};
+
+Do(function() {
+
+  var add_js = Do.add_js;
+
+  add_js(isay_src);
+
+  var thelabel = $('#isay-label');
+  var thetextarea = $('#isay-cont');
+  var root = $('#db-isay');
+
+  function check_ready(elem) {
+    if (Do.ISay) {
+        Do.ISay.init(elem);
+    } else {
+      //add_js(isay_src);
+      setTimeout(function() {
+        check_ready(elem);
+      }, 80);
+    }
+    if (!$.fn.tagsug) add_js(tagsug_src);
+  }
+
+  function init_isay(e) {
+    var elem = e.target;
+    var etype = e.type;
+    var node = $(elem);
+
+    if (elem.tagName == 'A') {
+      var no_action = !node.data('action');
+      if (elem.href.split('http')[0] == '' && no_action) {
+        return;
+      }
+      e.preventDefault();
+      if (no_action) return;
+    }
+
+    if (!Do.ISay) {
+      thelabel.text('正在初始化...');
+    }
+
+    init_isay = null;
+
+    if (elem.tagName == 'INPUT' || etype === 'dragenter') {
+      // for upload file..
+      setTimeout(function() {
+        check_ready(elem, etype);
+      }, 100);
+      return;
+    }
+
+    thetextarea.focus();
+
+    check_ready(elem);
+
+    e.stopPropagation();
+  }
+
+  // to prevent trigger more than one time
+  function handleEvent(e) {
+    init_isay && init_isay(e);
+  }
+
+  setTimeout(function() {
+    if (thetextarea.val()) thelabel.hide();
+  }, 50);
+
+  $('#isay-upload-inp').one('change', handleEvent);
+
+  thetextarea.one('focus dragenter', handleEvent);
+
+  root.one('click', handleEvent);
+
+  if (location.search) {
+    var params = location.search.substring(1).split('&');
+    var topic;
+    for (var i = 0; i < params.length; i++) {
+        var _m = params[i].split('=');
+        if (_m[0] === 'topic') {
+            topic = decodeURIComponent(_m[1]);
+        }
+    }
+
+    if (topic) {
+        thetextarea.val('#' + topic + '# ');
+        var el = thetextarea[0];
+        if (el.setSelectionRange) {
+           el.focus();
+           el.setSelectionRange(el.value.length, el.value.length)
+        } else {
+           range = el.createTextRange();
+           range.collapse(false);
+           range.select();
+        }
+    }
+  }
+
+  var actField = $('#isay-act-field'),
+      main = actField.siblings('.item'),
+      submit = $('#isay-submit'),
+      btnGroup = root.find('.btn-group'),
+      isayLinks = root.find('.isay-links'),
+      activeItem = isayLinks.find('.active'),
+      commodityPublishWays = isayLinks.find('.commodity-link .publish-ways');
+
+  function toggleCommodityPublishWays(state) {
+      state = state === undefined ? !commodityPublishWays.data('opened') : state;
+      commodityPublishWays.toggle(state).data('opened', state);
+  }
+
+  toggleCommodityPublishWays(false);
+
+  $(document).click(function(evt) {
+    var target = evt.target;
+    if (commodityPublishWays.data('opened')) {
+      if (target !== commodityPublishWays[0] && !$.contains(commodityPublishWays[0], target)) {
+        toggleCommodityPublishWays(false);
+      }
+    }
+  });
+
+  isayLinks.click(function(evt) {
+    if (evt.target.nodeName !== 'A') {
+      evt.stopImmediatePropagation();
+    }
+  });
+
+  isayLinks.find('a').click(isayItemHandler);
+
+  actField.delegate('a', 'click', function(evt) {
+    if (root.hasClass('share-mode')) {
+      isayItemHandler(evt);
+    }
+  });
+
+  function isayItemHandler(evt) {
+    var link = $(evt.target),
+        href = link.attr('href'),
+        action = link.data('action'),
+        item = link.parents('li'),
+        isCurrentItem = item.hasClass('active'),
+        commodityState;
+
+    if (action === 'commodity') {
+      toggleCommodityPublishWays();
+      evt.stopImmediatePropagation();
+      return;
+    } else {
+      toggleCommodityPublishWays(false);
+    }
+
+    if (isCurrentItem && Do.ISay) {
+      switch (action) {
+        case 'main':
+          thetextarea.focus();
+          break;
+        case 'share':
+          $('#isay-inp-url').focus();
+          break;
+      }
+      evt.stopImmediatePropagation();
+      return;
+    }
+
+    if (action && !isCurrentItem) {
+      activeItem.removeClass('active');
+      item.addClass('active');
+      activeItem = item;
+    }
+  }
+
+});
+
+})();
+
+]]></script><script type="text/javascript" src="https://img3.doubanio.com/misc/mixed_static/7571b7110332bcbc.js"/><!-- biz script begin --><!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5WP579" height="0" width="0" style="display:none;visibility:hidden"/></noscript>
+<script><![CDATA[(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5WP579');]]></script><!-- End Google Tag Manager --><script type="text/javascript"><![CDATA[
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+    var p=(('https:' == document.location.protocol) ? 'https' : 'http'), u=p+'://fundin.douban.com/';
+    _paq.push(['setTrackerUrl', u+'piwik']);
+    _paq.push(['setSiteId', '100001']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript';
+    g.defer=true;
+    g.async=true;
+    g.src=p+'://img3.doubanio.com/dae/fundin/piwik.js';
+    s.parentNode.insertBefore(g,s);
+})();
+]]></script><script type="text/javascript"><![CDATA[
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7019765-1']);
+_gaq.push(['_setCampNameKey', 'dcn']);
+_gaq.push(['_setCampSourceKey', 'dcs']);
+_gaq.push(['_setCampMediumKey', 'dcm']);
+_gaq.push(['_setCampTermKey', 'dct']);
+_gaq.push(['_setCampContentKey', 'dcc']);
+_gaq.push(['_addOrganic', 'baidu', 'word']);
+_gaq.push(['_addOrganic', 'soso', 'w']);
+_gaq.push(['_addOrganic', '3721', 'name']);
+_gaq.push(['_addOrganic', 'youdao', 'q']);
+_gaq.push(['_addOrganic', 'so.360.cn', 'q']);
+_gaq.push(['_addOrganic', 'vnet', 'kw']);
+_gaq.push(['_addOrganic', 'sogou', 'query']);
+_gaq.push(['_addIgnoredOrganic', '豆瓣']);
+_gaq.push(['_addIgnoredOrganic', 'douban']);
+_gaq.push(['_addIgnoredOrganic', '豆瓣网']);
+_gaq.push(['_addIgnoredOrganic', 'www.douban.com']);
+_gaq.push(['_setDomainName', '.douban.com']);
+
+_gaq.push(['_setCustomVar', 1, 'site_type', 'normal', 3]); 
+
+
+    _gaq.push(['_setCustomVar', 1, 'responsive_view_mode', 'desktop', 3]);
+
+_gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageLoadTime']);
+
+window._ga_init = function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+};
+if (window.addEventListener) {
+    window.addEventListener('load', _ga_init, false);
+} else {
+    window.attachEvent('onload', _ga_init);
+}
+]]></script><script type="text/javascript"><![CDATA[
+  Do(function(){
+    $(function(){
+      $.get('/stat.html?ref=https%3A%2F%2Fsite.douban.com%2F259235%2F&site_type=n&bid=mB5ckn_GL54&uid=na');
+    });
+  });
+]]></script><!-- biz script end --><!-- douban ad begin --><script type="text/javascript"><![CDATA[
+    (function (global) {
+        var newNode = global.document.createElement('script'),
+            existingNode = global.document.getElementsByTagName('script')[0],
+            adSource = '//erebor.douban.com/',
+            userId = '',
+            browserId = 'mB5ckn_GL54',
+            criteria = '5:259235|3:/259235/',
+            preview = '',
+            debug = false,
+            adSlots = ['dale_site_host_right_bottom'];
+
+        global.DoubanAdRequest = {src: adSource, uid: userId, bid: browserId, crtr: criteria, prv: preview, debug: debug};
+        global.DoubanAdSlots = (global.DoubanAdSlots || []).concat(adSlots);
+
+        newNode.setAttribute('type', 'text/javascript');
+        newNode.setAttribute('src', 'https://img3.doubanio.com/f/shire/256711a2a3fa720df625257c30ea5ab0062c8c9f/js/ad.js');
+        newNode.setAttribute('async', true);
+        existingNode.parentNode.insertBefore(newNode, existingNode);
+    })(this);
+]]></script><!-- douban ad end --><script><![CDATA[_SPLITTEST='']]></script><!-- sindar6c-docker--></body>
+</html>
